@@ -301,6 +301,7 @@ UsedLibrary="C:/Users/Joe/Dropbox/eagle/lbr/XMOS.lbr"
 UsedLibrary="C:/Users/Joe/Dropbox/eagle/lbr/aos.lbr"
 UsedLibrary="C:/Users/Joe/Dropbox/eagle/lbr/auv.lbr"
 UsedLibrary="C:/Users/Joe/Dropbox/eagle/lbr/bourns.lbr"
+UsedLibrary="C:/Users/Joe/Dropbox/eagle/lbr/con-hirose.lbr"
 UsedLibrary="C:/Users/Joe/Dropbox/eagle/lbr/con-molex.lbr"
 UsedLibrary="C:/Users/Joe/Dropbox/eagle/lbr/con-samtec.lbr"
 UsedLibrary="C:/Users/Joe/Dropbox/eagle/lbr/con-tyco.lbr"
@@ -320,48 +321,12 @@ UsedLibrary="C:/Users/Joe/Dropbox/eagle/lbr/rcl.lbr"
 UsedLibrary="C:/Users/Joe/Dropbox/eagle/lbr/st-microelectronics.lbr"
 UsedLibrary="C:/Users/Joe/Dropbox/eagle/lbr/texas.lbr"
 UsedLibrary="C:/Users/Joe/Dropbox/eagle/lbr/zetex.lbr"
-UsedLibrary="C:/Users/Joe/Dropbox/eagle/lbr/con-hirose.lbr"
 
 [Win_1]
-Type="Schematic Editor"
-Loc="50 100 350 499"
-State=1
-Number=2
-File="urdevboard.sch"
-View="397692 112994 1122368 653250"
-WireWidths=" 0 3048 6096 8128 10160 12700 14224 16764 17780 19304 21844 25400 38100 64516 4064 1524"
-PadDiameters=" 2540 3048 4064 6096 8128 10160 12700 14224 16764 17780 19304 21844 25400 38100 64516 0"
-PadDrills=" 5000 6000 7000 9000 10000 11000 12000 13000 14000 15000 16000 20000 22000 28000 32000 8000"
-ViaDiameters=" 2540 3048 4064 6096 8128 10160 12700 14224 16764 17780 19304 21844 25400 38100 64516 0"
-ViaDrills=" 5000 7000 8000 9000 10000 11000 12000 13000 14000 15000 16000 20000 22000 28000 32000 6000"
-HoleDrills=" 5000 7000 8000 9000 10000 11000 12000 13000 14000 15000 16000 20000 22000 28000 32000 6000"
-TextSizes=" 2540 3048 4064 6096 8128 12700 14224 16764 19304 21844 25400 38100 50800 64516 17780 10160"
-PolygonSpacings=" 2540 3048 4064 6096 8128 10160 14224 16764 17780 19304 21844 25400 38100 50800 64516 12700"
-PolygonIsolates=" 2540 3048 4064 6096 8128 10160 12700 14224 16764 17780 19304 21844 25400 38100 64516 0"
-MiterRadiuss=" 2540 3175 6350 12700 25400 10000 20000 25000 50000 75000 100000 0"
-SmdSizes=" 3048 1524 4064 2032 6096 3048 8128 4064 10160 5080 12700 6604 14224 7112 16764 8128 17780 9144 19304 9652 21844 10668 25400 12700 38100 19304 50800 25400 64516 32512 12700 6350"
-WireBend=0
-WireBendSet=31
-WireCap=1
-MiterStyle=0
-PadShape=0
-ViaShape=0
-PolygonPour=0
-PolygonRank=7
-PolygonThermals=1
-PolygonOrphans=0
-TextRatio=8
-PinDirection=3
-PinFunction=0
-PinLength=2
-PinVisible=3
-SwapLevel=0
-ArcDirection=0
-AddLevel=2
-PadsSameType=0
-Layer=91
-Views=" 1: -523905 -1033619 2592071 1289387 2: 397692 112994 1122368 653250 3: -18665 -554028 1484023 566248 4: -1512464 -752379 290572 593981 5: -1697470 -1524977 2041694 1262621 6: -870166 -550884 632520 569388 7: -1029851 -637478 472835 482794 8: -909592 -588059 593708 532829 9: -1005554 -650032 1158318 963166 11: -835316 -264440 34296 383868"
-Sheet=2
+Type="Control Panel"
+Loc="100 200 586 870"
+State=0
+Number=0
 
 [Win_2]
 Type="Board Editor"
@@ -369,8 +334,8 @@ Loc="38 75 337 474"
 State=1
 Number=1
 File="urdevboard.brd"
-View="404395 176368 1614879 1195280"
-WireWidths=" 0 16764 17780 38100 64516 21844 19304 12700 25400 10160 8128 4064 3048 6096 2032 2540"
+View="305802 -456210 2397518 1304468"
+WireWidths=" 0 16764 17780 38100 64516 21844 19304 12700 25400 10160 8128 4064 3048 6096 2540 2032"
 PadDiameters=" 2540 3048 4064 6096 8128 10160 12700 14224 16764 17780 19304 21844 25400 38100 64516 0"
 PadDrills=" 5000 6000 7000 9000 10000 11000 12000 13000 14000 15000 16000 20000 22000 28000 32000 8000"
 ViaDiameters=" 2540 3048 4064 6096 8128 10160 12700 14224 16764 17780 19304 21844 25400 38100 64516 0"
@@ -402,14 +367,7 @@ AddLevel=2
 PadsSameType=0
 Layer=1
 
-[Win_3]
-Type="Control Panel"
-Loc="100 200 586 870"
-State=2
-Number=0
-
 [Desktop]
-Screen="1680 1050"
+Screen="3360 1050"
 Window="Win_1"
 Window="Win_2"
-Window="Win_3"
