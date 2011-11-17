@@ -11,19 +11,22 @@
 #include "urdb.h"
 
 #define CLK_REF	100000000
-#define STM32_CLK_REF	32000000
 #define STM32_BIT_RATE	32000000
-#define STM32_BIT_PRD	STM32_CLK_REF / STM32_BIT_RATE
+#define STM32_BIT_PRD 	XS1_TIMER_HZ / STM32_BIT_RATE
 
-short int current_adc_res;	// 0 = 12-bit, 1 = 10-bit, 2 = 8-bit, 3 = 6-bit
-short int current_dac_res;	// 0 = 12-bit, 1 = 8-bit
+int current_adc_res;	// 0 = 12-bit, 1 = 10-bit, 2 = 8-bit, 3 = 6-bit
+int current_dac_res;	// 0 = 12-bit, 1 = 8-bit
+short int cmd_data_widths[35];	// Index of array = opcode, Data in array = # of bits of data for that opcode
+short int reply_data_widths[35];	// Index of array = opcode, Data in array = # of bits of data for that opcode
+short int current_opcode;
+short int transfer_in_progress;	// Boolean
 
 /*
  * 			-------- COMMUNICATIONS FORMAT --------
  *
- * -----------------------------
- * | CMD/REPLY | OPCODE | DATA |
- * -----------------------------
+ * 		-----------------------------
+ * 		| CMD/REPLY | OPCODE | DATA |
+ * 		-----------------------------
  *
  * Where:
  * - CMD/REPLY is a 1-bit value. 0 = command, 1 = reply.
@@ -31,12 +34,15 @@ short int current_dac_res;	// 0 = 12-bit, 1 = 8-bit
  * - OPCODE is a 7-bit value from the defined values below.
  *
  * - DATA is the data associated with the command. Data width varies depending
- * 		on the OPCODE and CMD/REPLY values (see command table below).
+ * 		on the OPCODE and CMD/REPLY values (see command table below). Note that
+ * 		all data is sent in 8-bit chunks, the width values below denote what of
+ * 		that is actual data vs garbage.
  *
  * 	A device initiates communication by sending a command and any associated
  * data. After receiving any data associated with the command, the receiving
  * device sends a reply with the same opcode followed by any associated data
- * requested by the device which initiated the communication.
+ * requested by the device which initiated the communication. Neither device
+ * shall initiate a new command until the current exchange is completed.
  */
 
 // Command formatting "register"
@@ -88,6 +94,11 @@ short int current_dac_res;	// 0 = 12-bit, 1 = 8-bit
 #define	CMD_DAC_CH1_OUT		34		// current_dac_res	0
 
 /**
+ * Populate the data_widths[] array
+ */
+void set_data_widths(void);
+
+/**
  * Get ADC resolution from STM32 and update locally
  */
 void get_adc_res();
@@ -108,10 +119,44 @@ void get_dac_res();
 void set_dac_res(int res);
 
 /**
- * UART transmit function based on Digikey XMOS PTM
+ * Initialize the UART pins/clocks.
  */
-void txByte(out port TXD, int byte);
-out port TXD = PORT_UART_TX;
+void stm32_uart_init(void);
 
+/**
+ * Transmit a byte over the UART
+ */
+void tx_byte(int byte);
+
+/**
+ * Receive a byte over the UART
+ */
+int rx_byte(void);
+
+/**
+ * Transmits the cmd/reply and opcode block of a message.
+ */
+void tx_cmd(int cmd_reply, int opcode);
+
+/**
+ * Receives a new command from the STM32
+ */
+int rx_cmd(void);
+
+/**
+ * Transmit an arbitrary # of bytes of data over the UART
+ */
+void tx_data(int data, int bytes_to_tx);
+
+/**
+ * Receive an arbitrary # of bytes of data over the UART
+ */
+int rx_data(int bytes_to_rx);
+
+/**
+ * Initiate a complete message to the STM32
+ * @return Reply data from command code
+ */
+int send_message(int opcode, int data);
 
 #endif /* STM32_H_ */
