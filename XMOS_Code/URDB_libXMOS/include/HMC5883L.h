@@ -12,20 +12,20 @@
 #define HMC5883L_READ_ADDR			0x3D
 #define HMC5883L_WRITE_ADDR			0x3C
 
-// Registers
-#define	HMC5883L_REG_CRA			0x00	// Read/Write
-#define	HMC5883L_REG_CRB			0x01	// Read/Write
-#define	HMC5883L_REG_MODE			0x02	// Read only
-#define HMC5883L_REG_DATA_X_MSB		0x03	// Read only
-#define HMC5883L_REG_DATA_X_LSB		0x04	// Read only
-#define HMC5883L_REG_DATA_Z_MSB		0x05	// Read only
-#define HMC5883L_REG_DATA_Z_LSB		0x06	// Read only
-#define HMC5883L_REG_DATA_Y_MSB		0x07	// Read only
-#define HMC5883L_REG_DATA_Y_LSB		0x08	// Read only
-#define HMC5883L_REG_STATUS			0x09	// Read only
-#define HMC5883L_REG_ID_A			0x0A	// Read only
-#define HMC5883L_REG_ID_B			0x0B	// Read only
-#define HMC5883L_REG_ID_C			0x0C	// Read only
+// Registers						Address		Read/write type
+#define	HMC5883L_REG_CRA			0x00		// Read/Write
+#define	HMC5883L_REG_CRB			0x01		// Read/Write
+#define	HMC5883L_REG_MODE			0x02		// Read only
+#define HMC5883L_REG_DATA_X_MSB		0x03		// Read only
+#define HMC5883L_REG_DATA_X_LSB		0x04		// Read only
+#define HMC5883L_REG_DATA_Z_MSB		0x05		// Read only
+#define HMC5883L_REG_DATA_Z_LSB		0x06		// Read only
+#define HMC5883L_REG_DATA_Y_MSB		0x07		// Read only
+#define HMC5883L_REG_DATA_Y_LSB		0x08		// Read only
+#define HMC5883L_REG_STATUS			0x09		// Read only
+#define HMC5883L_REG_ID_A			0x0A		// Read only
+#define HMC5883L_REG_ID_B			0x0B		// Read only
+#define HMC5883L_REG_ID_C			0x0C		// Read only
 
 // Configuration Register A
 #define CRA_MA1	1 << 6
