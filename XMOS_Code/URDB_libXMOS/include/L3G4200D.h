@@ -36,4 +36,51 @@
 #define	L3G4200D_REG_INT1_TSH_ZL	0x37		// Read/Write
 #define	L3G4200D_REG_INT1_DURATION	0x38		// Read/Write
 
+// CTRL_REG1 Register
+#define CTRL_REG1_DR1		1 << 7
+#define CTRL_REG1_DR0		1 << 6
+#define CTRL_REG1_BW1		1 << 5
+#define CTRL_REG1_BW0		1 << 4
+#define CTRL_REG1_PD		1 << 3
+#define CTRL_REG1_ZEN		1 << 2
+#define CTRL_REG1_YEN		1 << 1
+#define CTRL_REG1_XEN		1
+
+// CTRL_REG2 Register
+#define CTRL_REG2_HPM1		1 << 5
+#define CTRL_REG2_HPM0		1 << 4
+#define CTRL_REG2_HPCF3		1 << 3
+#define CTRL_REG2_HPCF2		1 << 2
+#define CTRL_REG2_HPCF1		1 << 1
+#define CTRL_REG2_HPCF0		1
+
+// CTRL_REG3 Register
+#define CTRL_REG3_I1_INT1	1 << 7
+#define CTRL_REG3_I1_BOOT	1 << 6
+#define CTRL_REG3_H_LACTIVE	1 << 5
+#define CTRL_REG3_PP_OD		1 << 4
+#define CTRL_REG3_I2_DRDY	1 << 3
+#define CTRL_REG3_I2_WTM	1 << 2
+#define CTRL_REG3_ORUN		1 << 1
+#define CTRL_REG3_EMPTY		1
+
+// CTRL_REG4 Register
+#define CTRL_REG4_BDU		1 << 7
+#define CTRL_REG4_BLE		1 << 6
+#define CTRL_REG4_FS1		1 << 5
+#define CTRL_REG4_FS0		1 << 4
+#define CTRL_REG4_ST1		1 << 2
+#define CTRL_REG4_ST0		1 << 1
+#define CTRL_REG4_SIM		1
+
+// CTRL_REG5 Register
+#define CTRL_REG5_BOOT		1 << 7
+#define CTRL_REG5_FIFO_EN	1 << 6
+#define CTRL_REG5_HPEN		1 << 4
+#define CTRL_REG5_INT1_SEL1	1 << 3
+#define CTRL_REG5_INT1_SEL0	1 << 2
+#define CTRL_REG5_OUT_SEL1	1 << 1
+#define CTRL_REG5_OUT_SEL0	1
+
+
 #endif /* L3G4200D_H_ */
