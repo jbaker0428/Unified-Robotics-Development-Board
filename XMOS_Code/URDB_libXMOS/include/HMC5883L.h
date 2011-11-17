@@ -1,8 +1,8 @@
-/*
- * HMC5883L.h
+/**
+ *	@file HMC5883L.h
  *
- *  Created on: Nov 11, 2011
- *      Author: joe
+ *	@date 11/11/2011
+ *	@author jbaker
  */
 
 #ifndef HMC5883L_H_

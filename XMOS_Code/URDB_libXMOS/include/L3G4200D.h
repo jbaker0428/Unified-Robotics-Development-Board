@@ -1,8 +1,8 @@
-/*
- * L3G4200D.h
+/**
+ *	@file L3G4200D.h
  *
- *  Created on: Nov 17, 2011
- *      Author: joe
+ *	@date 11/17/2011
+ *	@author jbaker
  */
 
 #ifndef L3G4200D_H_

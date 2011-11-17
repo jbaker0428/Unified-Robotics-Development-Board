@@ -1,8 +1,8 @@
-/*
- * urdb.h
+/**
+ *	@file urdb.h
  *
- *  Created on: Nov 9, 2011
- *      Author: joe
+ *	@date 11/9/2011
+ *	@author jbaker
  */
 
 #ifndef URDB_H_
