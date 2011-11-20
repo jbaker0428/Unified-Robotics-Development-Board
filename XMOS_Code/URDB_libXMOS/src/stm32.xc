@@ -8,10 +8,10 @@
 #include "urdb.h"
 #include "stm32.h"
 
-in	port stm32_clk = PORT_STM32_CLK;
-out buffered port:8 stm32_tx = PORT_STM32_TX;
-in	buffered port:8 stm32_rx = PORT_STM32_RX;
-clock clk = XS1_CLKBLK_5;
+on stdcore[0]: in	port stm32_clk = PORT_STM32_CLK;
+on stdcore[0]: out buffered port:8 stm32_tx = PORT_STM32_TX;
+on stdcore[0]: in	buffered port:8 stm32_rx = PORT_STM32_RX;
+on stdcore[0]: clock clk = XS1_CLKBLK_5;
 
 void set_data_widths()
 {
@@ -164,4 +164,3 @@ int rx_data(int bytes_to_rx)
 	}
 	return data;
 }
-
