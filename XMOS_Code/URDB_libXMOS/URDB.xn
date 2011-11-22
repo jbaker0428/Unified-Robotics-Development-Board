@@ -57,10 +57,13 @@ xsi:schemaLocation="http://www.xmos.com http://www.xmos.com">
 			<Port Location="XS1_PORT_1C" Name="PORT_ACCELEROMETER_INT1"/>
             <Port Location="XS1_PORT_1D" Name="PORT_ACCELEROMETER_INT2"/>
 			
+			<Port Location="XS1_PORT_1F" Name="PORT_IOEXPANDER_INTA"/>
+			<Port Location="XS1_PORT_1H" Name="PORT_IOEXPANDER_INTB"/>
+			
 			<Port Location="XS1_PORT_8A" Name="PORT_PMOD_2"/>
 			
-			<Port Location="XS1_PORT_1H" Name="PORT_PWM_0"/>
-			<Port Location="XS1_PORT_1I" Name="PORT_PWM_1"/>
+			<Port Location="XS1_PORT_1I" Name="PORT_PWM_0"/>
+			<Port Location="XS1_PORT_1E" Name="PORT_PWM_1"/>
 			<Port Location="XS1_PORT_1G" Name="PORT_PWM_2"/>
 			
 			<!-- TODO --> <Port Location="XS1_PORT_1G" Name="PORT_M0_ENC0"/>
