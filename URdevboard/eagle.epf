@@ -325,7 +325,7 @@ UsedLibrary="C:/Users/Joe/Dropbox/eagle/lbr/zetex.lbr"
 [Win_1]
 Type="Control Panel"
 Loc="100 200 586 870"
-State=0
+State=2
 Number=0
 
 [Desktop]
