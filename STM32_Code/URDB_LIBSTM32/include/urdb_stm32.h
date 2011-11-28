@@ -9,22 +9,8 @@
 #define URDB_STM32_H_
 
 #include <stdint.h>
+#include <stm32l1xx_conf.h>
 //#include <core_cm3.h>
-#include <stm32l1xx_adc.h>
-#include <stm32l1xx_dac.h>
-#include <stm32l1xx_dma.h>
-#include <stm32l1xx_flash.h>
-#include <stm32l1xx_gpio.h>
-#include <stm32l1xx_i2c.h>
-#include <stm32l1xx_iwdg.h>
-#include <stm32l1xx_pwr.h>
-#include <stm32l1xx_rcc.h>
-#include <stm32l1xx_rtc.h>
-#include <stm32l1xx_spi.h>
-#include <stm32l1xx_syscfg.h>
-#include <stm32l1xx_tim.h>
-#include <stm32l1xx_usart.h>
-#include <stm32l1xx_wwdg.h>
 #include <stm32l1xx.h>
 #include "xmos_uart.h"
 
@@ -87,9 +73,9 @@
 #define ARDUINO_D13_PORT	GPIOD		// SPI2_SCK = PD1
 #define ARDUINO_D13_PIN		GPIO_Pin_1	// SPI2_SCK = PD1
 
-#define XMOS_TIM_PORT	GPIOB		// TIM3_CH2 = PB5
-#define XMOS_TIM_PIN	GPIO_Pin_5	// TIM3_CH2 = PB5
-#define XMOS_TIM_SRC	GPIO_PinSource5
+#define XMOS_TIM_PORT	GPIOE		// TIM3_CH2 = PB5
+#define XMOS_TIM_PIN	GPIO_Pin_3	// TIM3_CH2 = PB5
+#define XMOS_TIM_SRC	GPIO_PinSource3
 #define XMOS_TX_PORT	GPIOB		// U1TX = PB6
 #define XMOS_TX_PIN		GPIO_Pin_6	// U1TX = PB6
 #define XMOS_RX_PORT	GPIOB		// U1RX = PB7

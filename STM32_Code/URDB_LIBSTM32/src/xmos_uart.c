@@ -39,7 +39,7 @@ void uart_clk_out_init(void)
 	/* TIM3 clock enable */
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
 	/* GPIOA and GPIOB clock enable */
-	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA|RCC_AHBPeriph_GPIOB, ENABLE);
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOE, ENABLE);
 
 	GPIO_InitStructure.GPIO_Pin = XMOS_TIM_PIN;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
@@ -59,4 +59,7 @@ void uart_clk_out_init(void)
 	TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
 	TIM_OCInitStructure.TIM_Pulse = 1;
 	TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
+
+	TIM_OC2Init(TIM3, &TIM_OCInitStructure);
+	TIM_OC2PreloadConfig(TIM3, TIM_OCPreload_Enable);
 }
