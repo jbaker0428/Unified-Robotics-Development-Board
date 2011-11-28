@@ -18,9 +18,9 @@ DEBUG = -g
 CFLAGS = -Wall $(DEBUG) -I$(IDIR) -IC:\yagarto\lib\gcc\arm-none-eabi\4.6.2\include -mthumb -march=armv7-m -mcpu=cortex-m3
 AFLAGS = -r
 
-all: urdb_libstm32
+all: urdb_libstm32.a
 
-urdb_libstm32 : $(OBJS)
+urdb_libstm32.a : $(OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking ARM Archiver'
 	$(AR) $(AFLAGS) -o "urdb_libstm32.a" $(OBJS)

@@ -9,7 +9,7 @@
 #define URDB_STM32_H_
 
 #include <stdint.h>
-#include <core_cm3.h>
+//#include <core_cm3.h>
 #include <stm32l1xx_adc.h>
 #include <stm32l1xx_dac.h>
 #include <stm32l1xx_dma.h>
