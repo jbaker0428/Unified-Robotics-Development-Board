@@ -35,4 +35,4 @@ urdb_libstm32.a : $(OBJS)
 	@echo ' '
 
 clean :
-	\rm *.o
+	\rm *.o urdb_libstm32.a
