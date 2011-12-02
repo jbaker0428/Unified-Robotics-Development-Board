@@ -19,12 +19,13 @@ xsi:schemaLocation="http://www.xmos.com http://www.xmos.com">
           </Boot>
           <Core Number="0" Reference="stdcore[0]">
 		  
-			<Port Location="XS1_PORT_1L" Name="PORT_SERVO_0"/>
-			<Port Location="XS1_PORT_1K" Name="PORT_SERVO_1"/>
-			<Port Location="XS1_PORT_1C" Name="PORT_SERVO_2"/>
-			<Port Location="XS1_PORT_1D" Name="PORT_SERVO_3"/>
-			<Port Location="XS1_PORT_1A" Name="PORT_SERVO_4"/>
-			<Port Location="XS1_PORT_1B" Name="PORT_SERVO_5"/>
+
+		        <!-- SPI -->
+			<Port Location="XS1_PORT_1A" Name="PORT_SPI_MISO"/>
+			<Port Location="XS1_PORT_1C" Name="PORT_SPI_CLK"/>
+			<Port Location="XS1_PORT_1D" Name="PORT_SPI_MOSI"/>
+			<Port Location="XS1_PORT_1B" Name="PORT_EEPROM_SS"/>
+			<Port Location="XS1_PORT_1K" Name="PORT_MICROSD_SS"/>
 			
 			<Port Location="XS1_PORT_8A" Name="PORT_GADGETEER"/>
 			<Port Location="XS1_PORT_8D" Name="PORT_PMOD_0"/>
@@ -39,14 +40,6 @@ xsi:schemaLocation="http://www.xmos.com http://www.xmos.com">
           </Core>
           
           <Core Number="1" Reference="stdcore[1]">
-		  
-		        <!-- SPI -->
-			<Port Location="XS1_PORT_1L" Name="PORT_SPI_MISO"/>
-			<Port Location="XS1_PORT_1M" Name="PORT_SPI_CLK"/>
-			<Port Location="XS1_PORT_1N" Name="PORT_SPI_MOSI"/>
-			<Port Location="XS1_PORT_1O" Name="PORT_EEPROM_SS"/>
-			<Port Location="XS1_PORT_1P" Name="PORT_GYRO_SS"/>
-			<Port Location="XS1_PORT_1K" Name="PORT_MICROSD_SS"/>
 			
 				<!-- I2C -->
 			<Port Location="XS1_PORT_1A" Name="PORT_SDA"/>
@@ -55,16 +48,23 @@ xsi:schemaLocation="http://www.xmos.com http://www.xmos.com">
 			<Port Location="XS1_PORT_1J" Name="PORT_COMPASS_DRDY"/>
 			
 			<Port Location="XS1_PORT_1C" Name="PORT_ACCELEROMETER_INT1"/>
-            <Port Location="XS1_PORT_1D" Name="PORT_ACCELEROMETER_INT2"/>
+          		<Port Location="XS1_PORT_1D" Name="PORT_ACCELEROMETER_INT2"/>
 			
-			<Port Location="XS1_PORT_1F" Name="PORT_IOEXPANDER_INTA"/>
-			<Port Location="XS1_PORT_1H" Name="PORT_IOEXPANDER_INTB"/>
+			<Port Location="XS1_PORT_1P" Name="PORT_IOEXPANDER_INTA"/>
+			<Port Location="XS1_PORT_1O" Name="PORT_IOEXPANDER_INTB"/>
 			
 			<Port Location="XS1_PORT_8A" Name="PORT_PMOD_2"/>
 			
-			<Port Location="XS1_PORT_1I" Name="PORT_PWM_0"/>
-			<Port Location="XS1_PORT_1E" Name="PORT_PWM_1"/>
-			<Port Location="XS1_PORT_1G" Name="PORT_PWM_2"/>
+			<Port Location="XS1_PORT_1I" Name="PORT_SERVO_0"/>
+			<Port Location="XS1_PORT_1E" Name="PORT_SERVO_1"/>
+			<Port Location="XS1_PORT_1G" Name="PORT_SERVO_2"/>
+			<Port Location="XS1_PORT_1F" Name="PORT_SERVO_3"/>
+			<Port Location="XS1_PORT_1H" Name="PORT_SERVO_4"/>
+			<Port Location="XS1_PORT_1K" Name="PORT_SERVO_5"/>
+			
+			<Port Location="XS1_PORT_1L" Name="PORT_PWM_0"/>
+			<Port Location="XS1_PORT_1M" Name="PORT_PWM_1"/>
+			<Port Location="XS1_PORT_1N" Name="PORT_PWM_2"/>
 			
 			<!-- TODO --> <Port Location="XS1_PORT_1G" Name="PORT_M0_ENC0"/>
 			<!-- TODO --> <Port Location="XS1_PORT_1G" Name="PORT_M0_ENC1"/>
@@ -89,13 +89,6 @@ xsi:schemaLocation="http://www.xmos.com http://www.xmos.com">
 	<Device NodeId="0" Core="1" Class="Flash" Name="microSD" Type="uSD">
       <Attribute Name="PORT_SPI_MISO" Value="PORT_SPI_MISO"/>
       <Attribute Name="PORT_MICROSD_SS"   Value="PORT_MICROSD_SS"/>
-      <Attribute Name="PORT_SPI_CLK"  Value="PORT_SPI_CLK"/>
-      <Attribute Name="PORT_SPI_MOSI" Value="PORT_SPI_MOSI"/>
-    </Device>
-	
-	<Device NodeId="0" Core="1" Class="SPISensor" Name="Gyro" Type="MMA8452Q">
-      <Attribute Name="PORT_SPI_MISO" Value="PORT_SPI_MISO"/>
-      <Attribute Name="PORT_EEPROM_SS"   Value="PORT_MICROSD_SS"/>
       <Attribute Name="PORT_SPI_CLK"  Value="PORT_SPI_CLK"/>
       <Attribute Name="PORT_SPI_MOSI" Value="PORT_SPI_MOSI"/>
     </Device>
