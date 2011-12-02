@@ -8,6 +8,21 @@
 #ifndef XMOS_UART_H_
 #define XMOS_UART_H_
 
+#define USART1_DR_ADDRESS		USART1->DR		// TODO: verify this is the correct thing to point to
+
+#define XMOS_TX_PORT			GPIOB
+#define XMOS_TX_PIN				GPIO_Pin_6
+#define XMOS_TX_DMA_CHANNEL		DMA1_Channel4
+#define XMOS_TX_DMA_FLAG_TC		DMA1_FLAG_TC4
+#define XMOS_TX_DMA_FLAG_GL		DMA1_FLAG_GL4
+
+#define XMOS_RX_PORT			GPIOB
+#define XMOS_RX_PIN				GPIO_Pin_7
+#define XMOS_RX_DMA_CHANNEL		DMA1_Channel5
+#define XMOS_RX_DMA_FLAG_TC		DMA1_FLAG_TC5
+#define XMOS_RX_DMA_FLAG_GL		DMA1_FLAG_GL5
+
+#define DMA1_CLK				RCC_AHBPeriph_DMA1
 /*
  * 			-------- COMMUNICATIONS FORMAT --------
  *
@@ -86,6 +101,16 @@
  * Initializes TIM3_CH2 to output a 32MHz clock to the XMOS.
  */
 void uart_clk_out_init(void);
+
+/**
+ * Initializes the TX/RX pins for UART1.
+ */
+void uart_gpio_init(void);
+
+/**
+ * Initializes channels 4 and 5 of DMA1 for UART1 TX/RX.
+ */
+void uart_dma_init(void);
 
 /**
  * Initializes USART1 to URDB spec.

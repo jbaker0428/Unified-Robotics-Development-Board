@@ -12,27 +12,7 @@ USART_InitTypeDef USART_InitStructure;
 TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
 TIM_OCInitTypeDef  TIM_OCInitStructure;
 GPIO_InitTypeDef GPIO_InitStructure;
-
-void xmos_uart_init(void)
-{
-	uart_clk_out_init();
-
-	/* USARTx configured as follow:
-	        - BaudRate = 32,000,000 baud
-	        - Word Length = 8 Bits
-	        - One Stop Bit
-	        - No parity
-	        - Hardware flow control disabled (RTS and CTS signals)
-	        - Receive and transmit enabled
-	*/
-	USART_InitStructure.USART_BaudRate = 32000000;
-	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
-	USART_InitStructure.USART_StopBits = USART_StopBits_1;
-	USART_InitStructure.USART_Parity = USART_Parity_No;
-	USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
-	USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
-	USART_Init(USART1, &USART_InitStructure);
-}
+DMA_InitTypeDef  DMA_InitStructure;
 
 void uart_clk_out_init(void)
 {
@@ -63,3 +43,64 @@ void uart_clk_out_init(void)
 	TIM_OC2Init(TIM3, &TIM_OCInitStructure);
 	TIM_OC2PreloadConfig(TIM3, TIM_OCPreload_Enable);
 }
+
+void uart_gpio_init(void)
+{
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
+	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_40MHz;
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
+
+	// TX
+	GPIO_InitStructure.GPIO_Pin = XMOS_TX_PIN;
+	GPIO_Init(XMOS_TX_PORT, &GPIO_InitStructure);
+
+	// RX
+	GPIO_InitStructure.GPIO_Pin = XMOS_RX_PIN;
+	GPIO_Init(XMOS_RX_PORT, &GPIO_InitStructure);
+
+}
+
+void uart_dma_init(void)
+{
+	DMA_InitStructure.DMA_PeripheralBaseAddr = USART1_DR_ADDRESS;
+	DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;
+	DMA_InitStructure.DMA_MemoryDataSize = DMA_PeripheralDataSize_Byte;
+	DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
+	DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;
+	DMA_InitStructure.DMA_Mode = DMA_Mode_Normal;
+	DMA_InitStructure.DMA_M2M = DMA_M2M_Disable;
+}
+
+void xmos_uart_init(void)
+{
+	RCC_AHBPeriphClockCmd(DMA1_CLK, ENABLE);
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB, ENABLE);
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
+
+	uart_clk_out_init();
+
+	/* USARTx configured as follows:
+	        - BaudRate = 32,000,000 baud
+	        - Word Length = 8 Bits
+	        - One Stop Bit
+	        - No parity
+	        - Hardware flow control disabled (RTS and CTS signals)
+	        - Receive and transmit enabled
+	*/
+	USART_InitStructure.USART_BaudRate = 32000000;
+	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
+	USART_InitStructure.USART_StopBits = USART_StopBits_1;
+	USART_InitStructure.USART_Parity = USART_Parity_No;
+	USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+	USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
+	USART_Init(USART1, &USART_InitStructure);
+
+	uart_dma_init();
+
+	USART_Cmd(USART1, ENABLE);
+}
+
+
+
+
