@@ -54,10 +54,12 @@ void uart_gpio_init(void)
 	// TX
 	GPIO_InitStructure.GPIO_Pin = XMOS_TX_PIN;
 	GPIO_Init(XMOS_TX_PORT, &GPIO_InitStructure);
+	GPIO_PinAFConfig(XMOS_TX_PORT, XMOS_TX_SRC, GPIO_AF_USART1);
 
 	// RX
 	GPIO_InitStructure.GPIO_Pin = XMOS_RX_PIN;
 	GPIO_Init(XMOS_RX_PORT, &GPIO_InitStructure);
+	GPIO_PinAFConfig(XMOS_RX_PORT, XMOS_RX_SRC, GPIO_AF_USART1);
 
 }
 
