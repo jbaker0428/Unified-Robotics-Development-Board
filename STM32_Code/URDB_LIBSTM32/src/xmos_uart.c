@@ -14,6 +14,20 @@ TIM_OCInitTypeDef  TIM_OCInitStructure;
 GPIO_InitTypeDef GPIO_InitStructure;
 DMA_InitTypeDef  DMA_InitStructure;
 
+uint8_t received_control_byte;
+
+struct
+{
+	unsigned int active:1;		// Transaction in progress
+	unsigned int master:1;		// The "master" is the device that initiated
+	unsigned int cmd_sent:1;	// Has a CMD control byte been sent/received?
+	unsigned int ack_sent:1;	// Has an ACK reply byte been sent/received?
+	unsigned int error:2;
+	// error: 0 = OK, 1 = multiple CMD's, 2 = sent CMD, got a CMD back, 3 = wrong/surprise ACK byte
+	//:2;	// TODO : This type of padding normally doesn't cause a syntax error?
+} uart_status;
+
+
 void uart_clk_out_init(void)
 {
 	/* TIM3 clock enable */
@@ -76,6 +90,10 @@ void uart_dma_init(void)
 
 void xmos_uart_init(void)
 {
+	uart_status.ack_sent = 0;
+	uart_status.active = 0;
+	uart_status.cmd_sent = 0;
+	uart_status.master = 0;
 	RCC_AHBPeriphClockCmd(DMA1_CLK, ENABLE);
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB, ENABLE);
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
