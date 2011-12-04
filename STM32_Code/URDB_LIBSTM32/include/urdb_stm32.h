@@ -103,4 +103,6 @@
 #define EXT_ADC_3_PORT	GPIOC		// ADCIN_13 = PC3
 #define EXT_ADC_3_PIN	GPIO_Pin_3	// ADCIN_13 = PC3
 #define EXT_ADC_3_SRC	GPIO_PinSource3
+
+int current_dac_res;	// 0 = 12-bit, 1 = 8-bit
 #endif /* URDB_STM32_H_ */

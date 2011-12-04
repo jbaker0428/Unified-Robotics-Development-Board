@@ -8,6 +8,9 @@
 #ifndef XMOS_UART_H_
 #define XMOS_UART_H_
 
+short int cmd_data_widths[35];	// Index of array = opcode, Data in array = # of bits of data for that opcode
+short int reply_data_widths[35];
+
 #define USART1_DR_ADDRESS		USART1->DR		// TODO: verify this is the correct thing to point to
 
 #define XMOS_TX_PORT			GPIOB
@@ -110,6 +113,10 @@
   * @}
   */
 
+/**
+ * Populate the <cmd/reply>_data_widths[] arrays
+ */
+void set_data_widths(void);
 
 /**
  * Initializes TIM3_CH2 to output a 32MHz clock to the XMOS.
