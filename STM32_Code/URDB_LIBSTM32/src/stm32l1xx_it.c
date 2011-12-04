@@ -154,6 +154,70 @@ void SysTick_Handler(void)
 }*/
 
 /**
+ * @brief Handles the XMOS UART TX DMA interrupt request.
+ * @param None
+ * @return None
+ */
+void DMA1_Channel4_IRQHandler(void)
+{
+
+}
+
+/**
+ * @brief Handles the XMOS UART RX DMA interrupt request.
+ * @param None
+ * @return None
+ */
+void DMA1_Channel5_IRQHandler(void)
+{
+	uint8_t cmd_ack, opcode;
+	if(DMA_GetITStatus(DMA1_IT_TC5))
+	{
+		// Coming from idle mode
+		if(!uart_status.active)
+		{
+			uart_status.active = 1;
+			uart_status.cmd_sent = 1;
+			uart_status.master = 0;
+			uart_handle_command(received_control_byte);
+		}
+
+		// Expecting ACK byte from XMOS
+		else if(uart_status.active && uart_status.cmd_sent && uart_status.master && !uart_status.ack_sent)
+		{
+			uart_status.ack_sent = 1;
+			cmd_ack = received_control_byte >> 7;
+			opcode = (received_control_byte << 1) >> 1;		// Filter out CMD/ACK bit
+			// Check message format
+			if(!cmd_ack)	// Is a CMD
+			{
+				uart_status.error = 2;
+				// TODO: Need error opcodes
+			}
+			else if(command != opcode)
+			{
+				uart_status.error = 3;
+			}
+			else
+			{
+				// TODO: Start data transmission
+			}
+		}
+
+		// Receiving data after ACK, master mode
+		else if(uart_status.active && uart_status.master && uart_status.cmd_sent && uart_status.ack_sent)
+		{
+			uart_handle_reply_data(opcode);
+		}
+
+		// Receiving data after ACK, slave mode
+		else if(uart_status.active && !uart_status.master && uart_status.cmd_sent && uart_status.ack_sent)
+		{
+			// TODO : What is handled here vs uart_handle_command?
+		}
+	}
+}
+/**
   * @}
   */ 
 
