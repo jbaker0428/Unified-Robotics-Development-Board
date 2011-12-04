@@ -62,7 +62,7 @@ short int transfer_in_progress;	// Boolean
 #define CMD_OPCODE_1		1 << 1
 #define CMD_OPCODE_0		1
 
-// 		Command				Opcode	Command data width	Reply data with
+// 		Command				Opcode	Command data width	Reply data width
 #define CMD_GET_ADC_0		0		// 0				current_adc_res
 #define CMD_GET_ADC_1		1		// 0				current_adc_res
 #define CMD_GET_ADC_2		2		// 0				current_adc_res
