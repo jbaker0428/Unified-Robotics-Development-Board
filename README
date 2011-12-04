@@ -1,1 +1,4 @@
-Eagle 5.6.0 Professional
+SOFTWARE USED:
+PCB design: Eagle 5.6.0 Professional
+STM32 code: Eclipse Indigo SR1 (CDT) and YAGARTO (Yet another GNU ARM toolchain)
+XMOS code: XMOS Development Environment
