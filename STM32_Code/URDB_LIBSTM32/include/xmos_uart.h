@@ -152,4 +152,28 @@ int uart_initiate_transaction(uint8_t opcode, int tx_data);
  */
 void handle_command(uint8_t opcode);
 
+/**
+ * Enable the UART transmitter in DMA mode
+ * @param base_adr Value to be used in DMA_InitType.DMA_MemoryBaseAddr
+ * @param num_bytes Number of bytes to transmit (DMA_InitType.DMA_BufferSize)
+ */
+void uart_tx_enable(uint32_t base_addr, int num_bytes);
+
+/**
+ * Disable UART transmitter's DMA channel
+ */
+void uart_tx_disable(void);
+
+/**
+ * Enable the UART receiver in DMA mode
+ * @param base_adr Value to be used in DMA_InitType.DMA_MemoryBaseAddr
+ * @param num_bytes Number of bytes to receive (DMA_InitType.DMA_BufferSize)
+ */
+void uart_rx_enable(uint32_t base_addr, int num_bytes);
+
+/**
+ * Disable UART receiver's DMA channel
+ */
+void uart_rx_disable(void);
+
 #endif /* XMOS_UART_H_ */
