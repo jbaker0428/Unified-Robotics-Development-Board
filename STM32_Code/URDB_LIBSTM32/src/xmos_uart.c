@@ -14,8 +14,6 @@ TIM_OCInitTypeDef  TIM_OCInitStructure;
 GPIO_InitTypeDef GPIO_InitStructure;
 DMA_InitTypeDef  DMA_InitStructure;
 
-uint8_t received_control_byte;
-
 struct
 {
 	unsigned int active:1;		// Transaction in progress
@@ -245,6 +243,8 @@ void uart_idle(void)
 
 int uart_initiate_transaction(uint8_t opcode, int tx_data)
 {
+	command = CMD_CMD | opcode;
+
 	if (uart_status.active == 1)
 		return -1;
 
@@ -252,6 +252,20 @@ int uart_initiate_transaction(uint8_t opcode, int tx_data)
 	uart_status.active = 1;
 	uart_status.master = 1;
 
-	// Activate TX and RX
-	//uart_tx_enable()
+	// Init TX and RX DMA
+	uart_tx_enable(&command, 1);
+	uart_rx_enable(&received_control_byte, 1);
+
+	// Enable DMA
+	USART_DMACmd(USART1, USART_DMAReq_Rx, ENABLE);
+	USART_DMACmd(USART1, USART_DMAReq_Tx, ENABLE);
+
+	USART_ClearFlag(USART1, USART_FLAG_TC);
+
+	DMA_Cmd(XMOS_TX_DMA_CHANNEL, ENABLE);
+	// TODO: Set cmd_sent in ISR in this state (active/master, TX complete interrupt)
+	DMA_Cmd(XMOS_RX_DMA_CHANNEL, ENABLE);
+	// TODO: Set ack_sent in ISR in this state (active/master/cmd_sent, RX complete interrupt)
+
+	return 0;
 }
