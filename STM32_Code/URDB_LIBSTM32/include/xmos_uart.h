@@ -160,7 +160,7 @@ int uart_initiate_transaction(uint8_t opcode, int tx_data);
  * Handles reply data from a master-mode transaction
  * @param opcode Initiating command code which is some value of @ref UART_opcodes
  */
-void uart_handle_reply(uint8_t opcode);
+void uart_handle_reply_data(uint8_t opcode);
 
 /**
  * Handle commands sent by the XMOS.
