@@ -33,7 +33,7 @@
  * 		-----------------------------
  *
  * Where:
- * - CMD/REPLY is a 1-bit value. 0 = command, 1 = reply.
+ * - CMD/REPLY is a 1-bit value. 0 = command, 1 = reply (ACK).
  *
  * - OPCODE is a 7-bit value from the defined values below.
  *
@@ -42,11 +42,18 @@
  * 		all data is sent in 8-bit chunks, the width values below denote what of
  * 		that is actual data vs garbage.
  *
- * 	A device initiates communication by sending a command and any associated
- * data. After receiving any data associated with the command, the receiving
- * device sends a reply with the same opcode followed by any associated data
- * requested by the device which initiated the communication. Neither device
- * shall initiate a new command until the current exchange is completed.
+ * 	  A device initiates communication by sending an opcode with the CMD/REPLY
+ * 	flag set to 0. The receiving devices acknowledges the command by sending a
+ * 	reply with the same opcode. After the ACK byte is sent, both devices begin
+ * 	the transfer of data associated with the opcode. In the event of an opcode
+ * 	being added in the future calling for both devices to send data, these
+ * 	transfers can occur simultaenously. Neither device shall initiate a new
+ * 	command until the current exchange is completed.
+ *
+ *	  The STM32 should set up DMA channels, buffers, etc. BEFORE sending the ACK
+ *	reply byte, as the speed of the link and higher processing speed of the XMOS
+ *	does not allow for time to do so after the ACK reply byte is sent.
+ *
  */
 
 // Command formatting "register"
