@@ -13,6 +13,8 @@ short int reply_data_bits[35];
 uint8_t cmd_data_bytes[35];
 uint8_t reply_data_bytes[35];
 
+uint8_t received_control_byte, command;
+
 #define USART1_DR_ADDRESS		USART1->DR		// TODO: verify this is the correct thing to point to
 
 #define XMOS_TX_PORT			GPIOB
@@ -150,16 +152,22 @@ void uart_idle(void);
  * Initiates a new transaction with the XMOS.
  * @param opcode Command code to send which is some value of @ref UART_opcodes
  * @param tx_data Data to transmit
- * @return Received data from XMOS, -1 if a transaction is already in progress
+ * @return 0 if success, -1 if a transaction is already in progress
  */
 int uart_initiate_transaction(uint8_t opcode, int tx_data);
+
+/**
+ * Handles reply data from a master-mode transaction
+ * @param opcode Initiating command code which is some value of @ref UART_opcodes
+ */
+void uart_handle_reply(uint8_t opcode);
 
 /**
  * Handle commands sent by the XMOS.
  * This should be called from an RX interrupt breaks the idle state.
  * @param opcode Received command code which is some value of @ref UART_opcodes
  */
-void handle_command(uint8_t opcode);
+void uart_handle_command(uint8_t opcode);
 
 /**
  * Enable the UART transmitter in DMA mode
