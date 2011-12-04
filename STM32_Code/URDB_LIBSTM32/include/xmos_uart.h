@@ -67,6 +67,9 @@
 #define CMD_OPCODE_1		1 << 1
 #define CMD_OPCODE_0		1
 
+/** @defgroup UART_opcodes
+  * @{
+  */
 // 		Command				Opcode	Command data width	Reply data width
 #define CMD_GET_ADC_0		0		// 0				current_adc_res
 #define CMD_GET_ADC_1		1		// 0				current_adc_res
@@ -103,7 +106,9 @@
 #define CMD_SET_DAC_RES		32		// 1-bit			0
 #define	CMD_DAC_CH0_OUT		33		// current_dac_res	0
 #define	CMD_DAC_CH1_OUT		34		// current_dac_res	0
-
+/**
+  * @}
+  */
 
 
 /**
@@ -125,5 +130,26 @@ void uart_dma_init(void);
  * Initializes USART1 to URDB spec.
  */
 void xmos_uart_init(void);
+
+/**
+ * Activates USART1 RX DMA channel to wait for a command code from the XMOS.
+ * This is the default state when there is nothing to send and no transaction in progress.
+ */
+void uart_idle(void);
+
+/**
+ * Initiates a new transaction with the XMOS.
+ * @param opcode Command code to send which is some value of @ref UART_opcodes
+ * @param tx_data Data to transmit
+ * @return Received data from XMOS, -1 if a transaction is already in progress
+ */
+int uart_initiate_transaction(uint8_t opcode, int tx_data);
+
+/**
+ * Handle commands sent by the XMOS.
+ * This should be called from an RX interrupt breaks the idle state.
+ * @param opcode Received command code which is some value of @ref UART_opcodes
+ */
+void handle_command(uint8_t opcode);
 
 #endif /* XMOS_UART_H_ */
