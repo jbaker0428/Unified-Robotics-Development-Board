@@ -66,6 +66,37 @@ void set_data_widths()
 			dac_bits = 12; break;
 			dac_bytes = 2; break;
 	}
+	for (int i=0; i<24; i++)
+	{
+		cmd_data_bits[i] = 0;
+	}
+	cmd_data_bits[24] = 0;
+	cmd_data_bits[25] = 2;
+	cmd_data_bits[26] = 8;
+	cmd_data_bits[27] = 0;
+	cmd_data_bits[28] = 0;
+	cmd_data_bits[29] = 24;
+	cmd_data_bits[30] = 24;
+	cmd_data_bits[31] = 0;
+	cmd_data_bits[32] = 1;
+	cmd_data_bits[33] = dac_bits;
+	cmd_data_bits[34] = dac_bits;
+
+	for (int i=0; i<24; i++)
+	{
+		reply_data_bits[i] = adc_bits;
+	}
+	reply_data_bits[24] = 2;
+	reply_data_bits[25] = 0;
+	reply_data_bits[26] = 0;
+	reply_data_bits[27] = 24;
+	reply_data_bits[28] = 24;
+	reply_data_bits[29] = 0;
+	reply_data_bits[30] = 0;
+	reply_data_bits[31] = 1;
+	reply_data_bits[32] = 0;
+	reply_data_bits[33] = 0;
+	reply_data_bits[34] = 0;
 
 	for (int i=0; i<24; i++)
 	{
