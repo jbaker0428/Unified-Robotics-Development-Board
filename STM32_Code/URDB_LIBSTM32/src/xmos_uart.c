@@ -24,7 +24,8 @@ struct
 	unsigned int ack_sent:1;	// Has an ACK reply byte been sent/received?
 	unsigned int error:2;
 	// error: 0 = OK, 1 = multiple CMD's, 2 = sent CMD, got a CMD back, 3 = wrong/surprise ACK byte
-	//:2;	// TODO : This type of padding normally doesn't cause a syntax error?
+	unsigned int tx_en:1;		// TX enable
+	unsigned int rx_en:1;		// RX enable
 } uart_status;
 
 
@@ -121,6 +122,23 @@ void xmos_uart_init(void)
 	USART_Cmd(USART1, ENABLE);
 }
 
+void uart_idle(void)
+{
+	// Clear status fields
+	uart_status.active = 0;
+	uart_status.master = 0;
+	uart_status.cmd_sent = 0;
+	uart_status.ack_sent = 0;
+	uart_status.error = 0;
+	received_control_byte = 0;
 
+	// Disable TX if it's not already
+	if(uart_status.tx_en == 1)
+	{
+		uart_tx_disable();	// Clears uart_status.tx_en
+	}
+	// Enable RX + interrupt
+	uart_rx_enable(&received_control_byte, 1);	// Sets uart_status.rx_en
+}
 
 
