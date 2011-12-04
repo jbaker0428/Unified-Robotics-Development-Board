@@ -32,63 +32,72 @@ struct
 void set_data_widths()
 {
 
-	int adc_bits, dac_bits;
+	short int adc_bits, dac_bits;
+	uint8_t adc_bytes, dac_bytes;
 
 	switch(ADC_CR1_RES)
 	{
 		case 0:
 			adc_bits = 12; break;
+			adc_bytes = 2; break;
 		case 1:
 			adc_bits = 10; break;
+			adc_bytes = 2; break;
 		case 2:
 			adc_bits = 8; break;
+			adc_bytes = 1; break;
 		case 3:
 			adc_bits = 6; break;
+			adc_bytes = 1; break;
 		default:
 			adc_bits = 12; break;
+			adc_bytes = 2; break;
 	}
 
 	switch(current_dac_res)
 	{
 		case 0:
 			dac_bits = 12; break;
+			dac_bytes = 2; break;
 		case 1:
-			dac_bits = 10; break;
+			dac_bits = 8; break;
+			dac_bytes = 1; break;
 		default:
 			dac_bits = 12; break;
+			dac_bytes = 2; break;
 	}
 
 	for (int i=0; i<24; i++)
 	{
-		cmd_data_widths[i] = 0;
+		cmd_data_bytes[i] = 0;
 	}
-	cmd_data_widths[24] = 0;
-	cmd_data_widths[25] = 2;
-	cmd_data_widths[26] = 8;
-	cmd_data_widths[27] = 0;
-	cmd_data_widths[28] = 0;
-	cmd_data_widths[29] = 24;
-	cmd_data_widths[30] = 24;
-	cmd_data_widths[31] = 0;
-	cmd_data_widths[32] = 1;
-	cmd_data_widths[33] = dac_bits;
-	cmd_data_widths[34] = dac_bits;
+	cmd_data_bytes[24] = 0;
+	cmd_data_bytes[25] = 1;
+	cmd_data_bytes[26] = 1;
+	cmd_data_bytes[27] = 0;
+	cmd_data_bytes[28] = 0;
+	cmd_data_bytes[29] = 3;
+	cmd_data_bytes[30] = 3;
+	cmd_data_bytes[31] = 0;
+	cmd_data_bytes[32] = 1;
+	cmd_data_bytes[33] = dac_bytes;
+	cmd_data_bits[34] = dac_bytes;
 
 	for (int i=0; i<24; i++)
 	{
-		reply_data_widths[i] = adc_bits;
+		reply_data_bytes[i] = adc_bytes;
 	}
-	reply_data_widths[24] = 2;
-	reply_data_widths[25] = 0;
-	reply_data_widths[26] = 0;
-	reply_data_widths[27] = 24;
-	reply_data_widths[28] = 24;
-	reply_data_widths[29] = 0;
-	reply_data_widths[30] = 0;
-	reply_data_widths[31] = 1;
-	reply_data_widths[32] = 0;
-	reply_data_widths[33] = 0;
-	reply_data_widths[34] = 0;
+	reply_data_bytes[24] = 1;
+	reply_data_bytes[25] = 0;
+	reply_data_bytes[26] = 0;
+	reply_data_bytes[27] = 3;
+	reply_data_bytes[28] = 3;
+	reply_data_bytes[29] = 0;
+	reply_data_bytes[30] = 0;
+	reply_data_bytes[31] = 1;
+	reply_data_bytes[32] = 0;
+	reply_data_bytes[33] = 0;
+	reply_data_bytes[34] = 0;
 }
 
 void uart_clk_out_init(void)

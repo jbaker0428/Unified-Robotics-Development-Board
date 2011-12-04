@@ -8,8 +8,10 @@
 #ifndef XMOS_UART_H_
 #define XMOS_UART_H_
 
-short int cmd_data_widths[35];	// Index of array = opcode, Data in array = # of bits of data for that opcode
-short int reply_data_widths[35];
+short int cmd_data_bits[35];	// Index of array = opcode, Data in array = # of bytes of data for that opcode
+short int reply_data_bits[35];
+uint8_t cmd_data_bytes[35];
+uint8_t reply_data_bytes[35];
 
 #define USART1_DR_ADDRESS		USART1->DR		// TODO: verify this is the correct thing to point to
 
