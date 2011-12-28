@@ -1,3 +1,5 @@
+The Unified Robotics Development Board seeks to provide an extensible open-hardware platform for robotics development based on XMOS technology.
+
 SOFTWARE USED:
 PCB design: Eagle 5.6.0 Professional
 STM32 code: Eclipse Indigo SR1 (CDT) and YAGARTO (Yet another GNU ARM toolchain)
