@@ -21,6 +21,11 @@
 #define _QUOTEME(x) #x
 #define QUOTEME(x) _QUOTEME(x)
 
+#define CT_END 1
+#define CT_PAUSE 2
+#define CT_ACK 3
+#define CT_NACK 4
+
 static inline unsigned int _inToken(unsigned int resource_id) {
   unsigned int ret;
   asm ("int %0,res[%1] ":"=r"(ret):"r"(resource_id));
