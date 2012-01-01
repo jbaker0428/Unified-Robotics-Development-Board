@@ -7,7 +7,7 @@
 #define _PWM_SINGLEBIT_PORT_H_
 
 void pwmSingleBitPort(
-    chanend c, clock clk,
+    unsigned c, clock clk,
     out buffered port:32 p[], 
     unsigned int numPorts, 
     unsigned int resolution, 
@@ -15,7 +15,7 @@ void pwmSingleBitPort(
     unsigned int edge);
 
 void pwmSingleBitPortSetDutyCycle(
-    chanend c, 
+    unsigned c,
     unsigned int dutyCycle[], 
     unsigned int numPorts);
 

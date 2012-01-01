@@ -15,7 +15,7 @@
 
 #pragma unsafe arrays
 void pwmSingleBitPort(
-    chanend c, clock clk,
+    unsigned c, clock clk,
     out buffered port:32 p[],
     unsigned int numPorts,
     unsigned int resolution, 
@@ -125,7 +125,7 @@ void pwmSingleBitPort(
 }
 
 void pwmSingleBitPortSetDutyCycle(
-    chanend c, 
+    unsigned c,
     unsigned int dutyCycle[], 
     unsigned int numPorts) {
 
