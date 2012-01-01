@@ -11,7 +11,7 @@
 on stdcore[0]: in	port stm32_clk = PORT_STM32_CLK;
 on stdcore[0]: out buffered port:8 stm32_tx = PORT_STM32_TX;
 on stdcore[0]: in	buffered port:8 stm32_rx = PORT_STM32_RX;
-on stdcore[0]: clock clk = XS1_CLKBLK_5;
+on stdcore[0]: clock stm32_uart_clk = XS1_CLKBLK_5;
 
 void set_data_widths()
 {
@@ -80,10 +80,10 @@ void stm32_uart_init()
 	current_dac_res = 0;	// STM32 default
 	current_opcode = -1;
 	transfer_in_progress = 0;
-	configure_clock_src(clk, stm32_clk);
-	configure_in_port(rx, clk);
-	configure_out_port_no_ready(tx, clk, 1);
-	start_clock(clk);
+	configure_clock_src(stm32_uart_clk, stm32_clk);
+	configure_in_port(rx, stm32_uart_clk);
+	configure_out_port_no_ready(tx, stm32_uart_clk, 1);
+	start_clock(stm32_uart_clk);
 
 	// wait for rx:
 	while(1)
