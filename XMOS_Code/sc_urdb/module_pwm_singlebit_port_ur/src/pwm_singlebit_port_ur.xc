@@ -23,6 +23,7 @@ void pwmSingleBitPort(
     unsigned int edge) {
 
     timer t;
+    unsigned dest_ch;
     unsigned int time;
     unsigned int dutyCycle[MAX_NUM_PORTS] = {0};
     unsigned int numTicks = 0;
@@ -51,9 +52,11 @@ void pwmSingleBitPort(
 #pragma xta endpoint "updateDutyCycle"
         case slave { 
             int i = 0;
+            _setChanEndDest(c, dest_ch);
             do { 
             	numTicks = 0;
-                c :> dutyCycle[i];
+            	dutyCycle[i] = _inInt(c);	// Old:
+            	// Non-UR version: c :> dutyCycle[i];
                 ++i;
             } while (i < numPorts);}:
             break;
@@ -128,12 +131,15 @@ void pwmSingleBitPortSetDutyCycle(
     unsigned c,
     unsigned int dutyCycle[], 
     unsigned int numPorts) {
-
+	unsigned dest_ch;
+	_setChanEndDest(c, dest_ch);
     assert(numPorts <= MAX_NUM_PORTS);
     master {
         for (unsigned int i = 0; i < numPorts; ++i) {
-            c <: dutyCycle[i];
+        	_outInt(c, dutyCycle[i]);
+            // Non-UR version: c <: dutyCycle[i];
         }
+        _outCT(c, CT_PAUSE);
     }
 }
 
