@@ -16,8 +16,6 @@
 #include <stdio.h>
 #include <xccompat.h>
 
-#define CLK_REF	100000000	// TODO : This may not be the correct value
-
 #define GADGETEER_CORE	0
 #define	PMOD_O_CORE		0
 #define	PMOD_1_CORE		0
@@ -26,7 +24,7 @@
 
 /**
  * @def NAVIGATION_CORE
- * Sets which core the navigation service is to be run on. This is the only essential URDB thread with a user-modifable core.
+ * Sets which core the navigation service is to be run on. This is the only essential URDB thread with a user-modifable core selection.
  */
 #define NAVIGATION_CORE	1
 #define I2C_CORE		1

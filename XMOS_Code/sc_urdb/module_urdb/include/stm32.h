@@ -10,7 +10,6 @@
 
 #include "urdb.h"
 
-#define CLK_REF	100000000
 #define STM32_BIT_RATE	32000000
 #define STM32_BIT_PRD 	XS1_TIMER_HZ / STM32_BIT_RATE
 
@@ -100,7 +99,7 @@ short int transfer_in_progress;	// Boolean
 #define	CMD_DAC_CH1_OUT		34		// current_dac_res	0
 
 /**
- * Populate the data_widths[] array
+ * Populate the <cmd/reply>_data_widths[] arrays
  */
 void set_data_widths(void);
 
