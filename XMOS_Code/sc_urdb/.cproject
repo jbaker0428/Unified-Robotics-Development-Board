@@ -8,7 +8,11 @@
 <externalSettings>
 <externalSetting>
 <entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/URDBLib"/>
+<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/URDB_libXMOS"/>
+<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/sc_urdb"/>
 <entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/URDBLib/Release"/>
+<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/URDB_libXMOS/Release"/>
+<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/sc_urdb/Release"/>
 </externalSetting>
 </externalSettings>
 <extensions>
@@ -19,7 +23,7 @@
 </extensions>
 </storageModule>
 <storageModule moduleId="cdtBuildSystem" version="4.0.0">
-<configuration artifactExtension="a" artifactName="URDBLib_Release" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.staticLib" buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.staticLib" description="" id="com.xmos.cdt.lib.release.343418492" name="Release" parent="com.xmos.cdt.lib.release">
+<configuration artifactExtension="a" artifactName="sc_urdb" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.staticLib" buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.staticLib" description="" id="com.xmos.cdt.lib.release.343418492" name="Release" parent="com.xmos.cdt.lib.release">
 <folderInfo id="com.xmos.cdt.lib.release.343418492." name="/" resourcePath="">
 <toolChain id="com.xmos.cdt.toolchain.lib.release.1951837588" name="XMOS Compiler Collection (xcc)" superClass="com.xmos.cdt.toolchain.lib.release">
 <targetPlatform id="com.xmos.cdt.core.platform.lib.release.1489693863" isAbstract="false" superClass="com.xmos.cdt.core.platform.lib.release"/>
@@ -31,30 +35,42 @@
 <tool id="com.xmos.cdt.xc.compiler.lib.release.1023953580" name="XC Compiler" superClass="com.xmos.cdt.xc.compiler.lib.release">
 <option defaultValue="gnu.c.optimization.level.more" id="gnu.c.compiler.option.optimization.level.1550166271" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" valueType="enumerated"/>
 <option id="gnu.c.compiler.option.debugging.level.3398255" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level"/>
+<option id="gnu.c.compiler.option.include.paths.853342768" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+<listOptionValue builtIn="false" value="&quot;${workspace_loc:/sc_urdb/module_urdb/include}&quot;"/>
+</option>
 <inputType id="com.xmos.cdt.xc.compiler.input.279324799" name="XC Sources" superClass="com.xmos.cdt.xc.compiler.input"/>
 <inputType id="com.xmos.cdt.core.xcCompilerXNInput.1364838969" name="XN File" superClass="com.xmos.cdt.core.xcCompilerXNInput"/>
 </tool>
 <tool id="com.xmos.cdt.c.compiler.lib.release.778889866" name="C Compiler" superClass="com.xmos.cdt.c.compiler.lib.release">
 <option defaultValue="gnu.c.optimization.level.more" id="gnu.c.compiler.option.optimization.level.1270286163" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" valueType="enumerated"/>
 <option id="gnu.c.compiler.option.debugging.level.418346488" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level"/>
+<option id="gnu.c.compiler.option.include.paths.266672400" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+<listOptionValue builtIn="false" value="&quot;${workspace_loc:/sc_urdb/module_urdb/include}&quot;"/>
+</option>
 <inputType id="com.xmos.cdt.c.compiler.input.507800893" superClass="com.xmos.cdt.c.compiler.input"/>
 <inputType id="com.xmos.cdt.c.compilerXNInput.1063798802" name="XN File" superClass="com.xmos.cdt.c.compilerXNInput"/>
 </tool>
 <tool id="com.xmos.cdt.cpp.compiler.lib.release.302879075" name="C++ Compiler" superClass="com.xmos.cdt.cpp.compiler.lib.release">
 <option id="gnu.cpp.compiler.option.optimization.level.1008587124" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" value="gnu.cpp.compiler.optimization.level.most" valueType="enumerated"/>
 <option id="gnu.cpp.compiler.option.debugging.level.1342263471" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
+<option id="gnu.cpp.compiler.option.include.paths.1698487791" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+<listOptionValue builtIn="false" value="&quot;${workspace_loc:/sc_urdb/module_urdb/include}&quot;"/>
+</option>
 <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.2030655406" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 </tool>
 <tool id="com.xmos.cdt.core.assembler.lib.release.1832306158" name="Assembler" superClass="com.xmos.cdt.core.assembler.lib.release">
 <option id="com.xmos.cdt.core.assembler.debugging.level.1289385027" name="Debug Level" superClass="com.xmos.cdt.core.assembler.debugging.level"/>
+<option id="gnu.both.asm.option.include.paths.833783511" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+<listOptionValue builtIn="false" value="&quot;${workspace_loc:/sc_urdb/module_urdb/include}&quot;"/>
+</option>
 <inputType id="cdt.managedbuild.tool.gnu.assembler.input.1669248178" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 <inputType id="com.xmos.cdt.core.asmXNInput.1196539953" name="XN File" superClass="com.xmos.cdt.core.asmXNInput"/>
 </tool>
 </toolChain>
 </folderInfo>
 <sourceEntries>
-<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
-<entry excluding="src" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+<entry excluding="module_urdb/src|src" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+<entry excluding="scheduler_helpers.xc" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="module_urdb/src"/>
 </sourceEntries>
 </configuration>
 </storageModule>
