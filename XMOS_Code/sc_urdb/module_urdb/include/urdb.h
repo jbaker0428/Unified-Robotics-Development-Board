@@ -19,18 +19,19 @@
 #define GADGETEER_CORE	0
 #define	PMOD_O_CORE		0
 #define	PMOD_1_CORE		0
-#define	SERVO_CORE		0
-#define	STM32_CORE		0
+#define PMOD_2_CORE		1
 
 /**
  * @def NAVIGATION_CORE
  * Sets which core the navigation service is to be run on. This is the only essential URDB thread with a user-modifable core selection.
  */
-#define NAVIGATION_CORE	1
+#define	STM32_CORE		0
 #define I2C_CORE		1
 #define SPI_CORE		1
 #define MOTOR_CORE		1
-#define PMOD_2_CORE		1
+#define	SERVO_CORE		1
+#define NAVIGATION_CORE	1
+
 
 /**
  * @var i2c_chanend Resource ID for the I2C IO server input chanend
@@ -46,6 +47,9 @@ unsigned stm32_uart_chanend;
 unsigned servo_chanend;
 unsigned motor_chanend;
 unsigned navigation_chanend;
+
+clock ref0;
+clock ref1;
 
 /**
  * @fn void urdb_init(void)
