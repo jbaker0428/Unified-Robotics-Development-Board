@@ -16,15 +16,23 @@
 #include <stdio.h>
 #include <xccompat.h>
 
+// Cores for essential URDB threads
+
+#define STM32_CORE		0
+#define I2C_CORE		1
+#define SPI_CORE		0
+/**
+ * @def PWM_CORE
+ * Sets which core the PWM thread is to be run on.
+ */
+#define PWM_CORE		1
 /**
  * @def NAVIGATION_CORE
  * Sets which core the navigation service is to be run on. This is the only essential URDB thread with a user-modifable core selection.
  */
-#define	STM32_CORE		0
-#define I2C_CORE		1
-#define SPI_CORE		1
-#define PWM_CORE		1
 #define NAVIGATION_CORE	1
+
+// Cores for other peripheral hardware
 
 #define GADGETEER_CORE	0
 #define	PMOD_O_CORE		0
