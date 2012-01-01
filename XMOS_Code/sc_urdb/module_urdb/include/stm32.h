@@ -97,6 +97,8 @@ short int transfer_in_progress;	// Boolean
 #define CMD_SET_DAC_RES		32		// 1-bit			0
 #define	CMD_DAC_CH0_OUT		33		// current_dac_res	0
 #define	CMD_DAC_CH1_OUT		34		// current_dac_res	0
+#define CMD_GET_IO_PIN		35		// 5-bit			17-bit
+#define CMD_SET_IO_PIN		36		// 17-bit			0
 
 /**
  * Populate the <cmd/reply>_data_widths[] arrays
