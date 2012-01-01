@@ -9,6 +9,11 @@
 #include "io_servers.h"
 #include "xlog_support.h"
 
+#define PWM_RESOLUTION 256
+#define PWM_PERIOD (RESOLUTION*20)
+#define PWM_NUM_PORTS 9
+#define PWM_TIMESTEP 10
+
 void urdb_init()
 {
 	// Allocate chanend resources for the IO servers/other threads and save the resource IDs
@@ -32,13 +37,8 @@ void urdb_init()
 		on stdcore[I2C_CORE] : i2c_server();
 		on stdcore[SPI_CORE] : spi_server();
 		on stdcore[STM32_CORE] : stm32_uart_server();
-		on stdcore[PWM_CORE] : pwmSingleBitPort(
-				servo_chanend, ref1,
-			    out buffered port:32 p[],
-			    unsigned int numPorts,
-			    unsigned int resolution,
-			    unsigned int timeStep,
-			    unsigned int edge)
+		on stdcore[PWM_CORE] : pwmSingleBitPort(servo_chanend, ref1, pwm_ports,
+			    PWM_NUM_PORTS, PWM_RESOLUTION, PWM_TIMESTEP, 1);
 		// on stdcore[NAVIGATION_CORE] : Navigation thread
 	}
 }
