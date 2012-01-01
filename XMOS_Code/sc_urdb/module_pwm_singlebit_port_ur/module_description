@@ -1,0 +1,1 @@
+PWM singlebit port module modified to take a chanend's numeric resource ID value as an argument instead of a chanend.
