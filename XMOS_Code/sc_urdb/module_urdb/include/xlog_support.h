@@ -24,7 +24,7 @@
 static inline unsigned int _inToken(unsigned int resource_id) {
   unsigned int ret;
   __asm volatile (
-         "int %0,res[%1] ":"=r"(ret):"r"(resource_id)         
+         "int %0,res[%1] ":"=r"(ret):"r"(resource_id)
          );
   return ret;
 }
@@ -80,7 +80,7 @@ static inline void _setChanEndDest(unsigned int resource_id, unsigned int dest) 
 static inline unsigned int _getChanEnd(void) {
   unsigned int ret;
   __asm volatile (
-     "getr %0, " QUOTEME(XS1_RES_TYPE_CHANEND):"=r"(ret)
+     "getr %0, 2" QUOTEME(XS1_RES_TYPE_CHANEND):"=r"(ret)
          );
   return ret;
 }
