@@ -9,7 +9,7 @@
 #include <xs1.h>
 #include <stdio.h>
 
-#include "pwm_singlebit_port.h"
+#include "pwm_singlebit_port_ur.h"
 
 #define MAX_NUM_PORTS 16
 
