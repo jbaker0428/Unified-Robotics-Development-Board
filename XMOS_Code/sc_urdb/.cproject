@@ -37,6 +37,7 @@
 <option id="gnu.c.compiler.option.debugging.level.3398255" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level"/>
 <option id="gnu.c.compiler.option.include.paths.853342768" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
 <listOptionValue builtIn="false" value="&quot;${workspace_loc:/sc_urdb/module_urdb/include}&quot;"/>
+<listOptionValue builtIn="false" value="&quot;${workspace_loc:/sc_urdb/module_pwm_singlebit_port_ur/src}&quot;"/>
 </option>
 <inputType id="com.xmos.cdt.xc.compiler.input.279324799" name="XC Sources" superClass="com.xmos.cdt.xc.compiler.input"/>
 <inputType id="com.xmos.cdt.core.xcCompilerXNInput.1364838969" name="XN File" superClass="com.xmos.cdt.core.xcCompilerXNInput"/>
@@ -46,6 +47,7 @@
 <option id="gnu.c.compiler.option.debugging.level.418346488" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level"/>
 <option id="gnu.c.compiler.option.include.paths.266672400" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
 <listOptionValue builtIn="false" value="&quot;${workspace_loc:/sc_urdb/module_urdb/include}&quot;"/>
+<listOptionValue builtIn="false" value="&quot;${workspace_loc:/sc_urdb/module_pwm_singlebit_port_ur/src}&quot;"/>
 </option>
 <inputType id="com.xmos.cdt.c.compiler.input.507800893" superClass="com.xmos.cdt.c.compiler.input"/>
 <inputType id="com.xmos.cdt.c.compilerXNInput.1063798802" name="XN File" superClass="com.xmos.cdt.c.compilerXNInput"/>
@@ -55,6 +57,7 @@
 <option id="gnu.cpp.compiler.option.debugging.level.1342263471" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
 <option id="gnu.cpp.compiler.option.include.paths.1698487791" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
 <listOptionValue builtIn="false" value="&quot;${workspace_loc:/sc_urdb/module_urdb/include}&quot;"/>
+<listOptionValue builtIn="false" value="&quot;${workspace_loc:/sc_urdb/module_pwm_singlebit_port_ur/src}&quot;"/>
 </option>
 <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.2030655406" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 </tool>
@@ -62,6 +65,7 @@
 <option id="com.xmos.cdt.core.assembler.debugging.level.1289385027" name="Debug Level" superClass="com.xmos.cdt.core.assembler.debugging.level"/>
 <option id="gnu.both.asm.option.include.paths.833783511" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
 <listOptionValue builtIn="false" value="&quot;${workspace_loc:/sc_urdb/module_urdb/include}&quot;"/>
+<listOptionValue builtIn="false" value="&quot;${workspace_loc:/sc_urdb/module_pwm_singlebit_port_ur/src}&quot;"/>
 </option>
 <inputType id="cdt.managedbuild.tool.gnu.assembler.input.1669248178" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 <inputType id="com.xmos.cdt.core.asmXNInput.1196539953" name="XN File" superClass="com.xmos.cdt.core.asmXNInput"/>
