@@ -16,11 +16,6 @@
 #include <stdio.h>
 #include <xccompat.h>
 
-#define GADGETEER_CORE	0
-#define	PMOD_O_CORE		0
-#define	PMOD_1_CORE		0
-#define PMOD_2_CORE		1
-
 /**
  * @def NAVIGATION_CORE
  * Sets which core the navigation service is to be run on. This is the only essential URDB thread with a user-modifable core selection.
@@ -28,24 +23,26 @@
 #define	STM32_CORE		0
 #define I2C_CORE		1
 #define SPI_CORE		1
-#define MOTOR_CORE		1
-#define	SERVO_CORE		1
+#define PWM_CORE		1
 #define NAVIGATION_CORE	1
+
+#define GADGETEER_CORE	0
+#define	PMOD_O_CORE		0
+#define	PMOD_1_CORE		0
+#define PMOD_2_CORE		1
 
 
 /**
  * @var i2c_chanend Resource ID for the I2C IO server input chanend
  * @var spi_chanend Resource ID for the SPI IO server input chanend
  * @var stm32_uart_chanend Resource ID for the STM32 UART IO server input chanend
- * @var servo_chanend Resource ID for the servo PWM thread input chanend
- * @var motor_chanend Resource ID for the motor PWM thread input chanend
+ * @var pwm_chanend Resource ID for the PWM thread input chanend
  * @var navigation_chanend Resource ID for the navigation thread input chanend
  */
 unsigned i2c_chanend;
 unsigned spi_chanend;
 unsigned stm32_uart_chanend;
-unsigned servo_chanend;
-unsigned motor_chanend;
+unsigned pwm_chanend;
 unsigned navigation_chanend;
 
 clock ref0;
