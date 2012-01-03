@@ -15,8 +15,8 @@
 
 int current_adc_res;	// 0 = 12-bit, 1 = 10-bit, 2 = 8-bit, 3 = 6-bit
 int current_dac_res;	// 0 = 12-bit, 1 = 8-bit
-short int cmd_data_widths[35];	// Index of array = opcode, Data in array = # of bits of data for that opcode
-short int reply_data_widths[35];	// Index of array = opcode, Data in array = # of bits of data for that opcode
+short int cmd_data_widths[37];	// Index of array = opcode, Data in array = # of bits of data for that opcode
+short int reply_data_widths[37];	// Index of array = opcode, Data in array = # of bits of data for that opcode
 short int current_opcode;
 short int transfer_in_progress;	// Boolean
 
