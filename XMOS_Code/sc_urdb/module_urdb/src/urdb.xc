@@ -23,8 +23,12 @@ void urdb_init()
 		on stdcore[SPI_CORE] : spi_chanend = _getChanEnd();
 		on stdcore[STM32_CORE] : stm32_uart_chanend = _getChanEnd();
 		on stdcore[PWM_CORE] : pwm_chanend = _getChanEnd();
-		on stdcore[NAVIGATION_CORE] : navigation_uart_chanend = _getChanEnd();
+		on stdcore[NAVIGATION_CORE] : navigation_chanend = _getChanEnd();
 	}
+
+	// Check for successful allocation of chanends
+	if(!i2c_chanend || !spi_chanend || !stm32_uart_chanend || !pwm_chanend || !navigation_chanend)
+		return;
 
 	// Initialize clocks
 	par
