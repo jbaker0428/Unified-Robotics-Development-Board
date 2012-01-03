@@ -22,19 +22,19 @@ extern "C" {
  * @fn void i2c_server(void)
  * @brief URDB I2C scheduler server
  */
-void i2c_server(void);
+void i2c_server(unsigned &server);
 
 /**
  * @fn void spi_server(void)
  * @brief URDB SPI scheduler server
  */
-void spi_server(void);
+void spi_server(unsigned &server);
 
 /**
  * @fn void stm32_uart_server(void)
  * @brief URDB STM32 UART scheduler server
  */
-void stm32_uart_server(void);
+void stm32_uart_server(unsigned &server);
 
 #ifdef __cplusplus
 }

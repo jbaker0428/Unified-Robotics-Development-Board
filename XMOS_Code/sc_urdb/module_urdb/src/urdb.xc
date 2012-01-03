@@ -43,9 +43,9 @@ void urdb_init()
 	// Execute all URDB threads
 	par
 	{
-		on stdcore[I2C_CORE] : i2c_server();
-		on stdcore[SPI_CORE] : spi_server();
-		on stdcore[STM32_CORE] : stm32_uart_server();
+		on stdcore[I2C_CORE] : i2c_server(&i2c_chanend);
+		on stdcore[SPI_CORE] : spi_server(&spi_chanend);
+		on stdcore[STM32_CORE] : stm32_uart_server(&stm32_uart_chanend);
 		on stdcore[PWM_CORE] : pwmSingleBitPort(pwm_chanend, ref1, pwm_ports,
 			    PWM_NUM_PORTS, PWM_RESOLUTION, PWM_TIMESTEP, 1);
 		// on stdcore[NAVIGATION_CORE] : Navigation thread
