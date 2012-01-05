@@ -1,5 +1,5 @@
-Part,Value,Device,Package,Vendor,Vendor PN,Manufacturer PN,Qty,Unit Price @ Qty,Part Price,
-C1,1uF,C-USC0603,C0603,,, ,1,,0,
+Part,Value,Device,Package,Vendor,Vendor PN,Manufacturer PN,Qty,Unit Price @ Qty,Part Price,TOTAL: 
+C1,1uF,C-USC0603,C0603,,, ,1,,0,105.4912
 "C2, C9, C10, C17, C29, C35",10uF,C-USC0805,C0805,DK,490-1709-1-ND,GRM21BR61A106KE19L,6,0.36,2.16,
 "C3, C4, C11, C12, C13, C14, C21, C22, C23, C25, C28, C30, C33, C38, C39, C40, C41, C42, C45, C48, C49, C55, C56",0.1uF,C-USC0603,C0603,DK,490-1524-1-ND,GRM188R71E104KA01D,23,0.089,2.047,
 "C5, C6",18pF,C-USC0603,C0603,,, ,2,,0,
