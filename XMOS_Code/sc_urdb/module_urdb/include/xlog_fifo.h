@@ -33,9 +33,9 @@ typedef struct client_fifo_t {
 	int rdIndex;
 	int wrIndex;
 	int data_fifo[XLOG_REQUEST_FIFO_LEN];
-	int server_fifo[XLOG_REQUEST_FIFO_LEN];
+	int server_fifo[XLOG_REQUEST_FIFO_LEN];		// Resource ID of server
 	unsigned char length_fifo[XLOG_REQUEST_FIFO_LEN];
-	REFERENCE_PARAM(int, return_fifo[XLOG_REQUEST_FIFO_LEN]);	// Reference to return data var
+	int return_fifo[XLOG_REQUEST_FIFO_LEN];	// Reference to return data var
 } client_fifo_t;
 
 #define isempty(x) (x.rdIndex == x.wrIndex)
