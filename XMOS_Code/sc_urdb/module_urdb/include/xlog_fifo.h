@@ -33,7 +33,7 @@ typedef struct client_fifo_t {
 	int rdIndex;
 	int wrIndex;
 	int data_fifo[XLOG_REQUEST_FIFO_LEN];
-	int server_fifo[XLOG_REQUEST_FIFO_LEN];		// Resource ID of server
+	int server;		// Resource ID of server associated with the FIFO
 	unsigned char length_fifo[XLOG_REQUEST_FIFO_LEN];
 	int return_fifo[XLOG_REQUEST_FIFO_LEN];	// Reference to return data var
 } client_fifo_t;
