@@ -36,7 +36,7 @@ typedef struct client_fifo_t {
 	int server_fifo[XLOG_REQUEST_FIFO_LEN];
 	unsigned char length_fifo[XLOG_REQUEST_FIFO_LEN];
 	REFERENCE_PARAM(int, return_fifo[XLOG_REQUEST_FIFO_LEN]);	// Reference to return data var
-};
+} client_fifo_t;
 
 #define isempty(x) (x.rdIndex == x.wrIndex)
 
@@ -48,11 +48,11 @@ void request_fifo_init(REFERENCE_PARAM(request_fifo_t, x));
 int request_fifo_push(REFERENCE_PARAM(request_fifo_t, x), unsigned int d);
 unsigned int  request_fifo_pull(REFERENCE_PARAM(request_fifo_t, x));
 
-void client_fifo_init(REFERENCE_PARAM(request_fifo_t, x));
-void client_fifo_push(REFERENCE_PARAM(request_fifo_t, x), int data, int server_id,
+void client_fifo_init(REFERENCE_PARAM(client_fifo_t, x));
+void client_fifo_push(REFERENCE_PARAM(client_fifo_t, x), int data, int server_id,
 		unsigned char length_token, REFERENCE_PARAM(int, ret_ref));
 
-void client_fifo_pull(REFERENCE_PARAM(request_fifo_t, x), REFERENCE_PARAM(unsigned int, data),
+void client_fifo_pull(REFERENCE_PARAM(client_fifo_t, x), REFERENCE_PARAM(unsigned int, data),
 		REFERENCE_PARAM(int, server_id), REFERENCE_PARAM(unsigned char, length_token), REFERENCE_PARAM(int, ret_ref));
 
 #endif //_xlog_fifo_h_
