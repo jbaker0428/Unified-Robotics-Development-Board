@@ -21,18 +21,21 @@ extern "C" {
 /**
  * @fn void i2c_server(void)
  * @brief URDB I2C scheduler server
+ * @param &server Reference to variable holding the server's resource ID
  */
 void i2c_server(unsigned &server);
 
 /**
  * @fn void spi_server(void)
  * @brief URDB SPI scheduler server
+ * @param &server Reference to variable holding the server's resource ID
  */
 void spi_server(unsigned &server);
 
 /**
  * @fn void stm32_uart_server(void)
  * @brief URDB STM32 UART scheduler server
+ * @param &server Reference to variable holding the server's resource ID
  */
 void stm32_uart_server(unsigned &server);
 

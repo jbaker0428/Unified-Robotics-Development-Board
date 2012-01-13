@@ -56,8 +56,8 @@
  * Sets DEFVALB = 0b00000110 = 0x06
  * Sets INTCONA = 0b01100110  = 0x66
  * Sets INTCONB = 0b00000110 = 0x06
- * TODO: Will this need a chanend as an argument for the I2C scheduler?
+ * @param &server Reference to variable holding the I2C server's resource ID
  */
-void mcp23017_init(void);
+void mcp23017_init(unsigned &server);
 
 #endif /* MCP23017_H_ */

@@ -105,66 +105,79 @@ short int transfer_in_progress;	// Boolean
 #define CMD_SET_U15_ALL		40		// 8-bit			0
 
 /**
+ * @fn void set_data_widths(void)
  * Populate the <cmd/reply>_data_widths[] arrays
  */
 void set_data_widths(void);
 
 /**
+ * @fn void get_adc_res()
  * Get ADC resolution from STM32 and update locally
  */
 void get_adc_res();
 
 /**
+ * @fn void set_adc_res(int res)
  * Set ADC resolution on STM32 and update locally
  */
 void set_adc_res(int res);
 
 /**
+ * @fn void get_dac_res()
  * Get DAC resolution from STM32 and update locally
  */
 void get_dac_res();
 
 /**
+ * @fn void set_dac_res(int res)
  * Set DAC resolution on STM32 and update locally
  */
 void set_dac_res(int res);
 
 /**
+ * @fn void stm32_uart_init(void)
  * Initialize the UART pins/clocks.
  */
 void stm32_uart_init(void);
 
 /**
+ * @fn void tx_byte(int byte)
  * Transmit a byte over the UART
  */
 void tx_byte(int byte);
 
 /**
+ * @fn int rx_byte(void)
  * Receive a byte over the UART
  */
 int rx_byte(void);
 
 /**
+ * @fn void tx_cmd(int cmd_reply, int opcode)
  * Transmits the cmd/reply and opcode block of a message.
  */
 void tx_cmd(int cmd_reply, int opcode);
 
 /**
+ * @fn int rx_cmd(void)
  * Receives a new command from the STM32
  */
 int rx_cmd(void);
 
 /**
+ * @fn void tx_data(int data, int bytes_to_tx)
  * Transmit an arbitrary # of bytes of data over the UART
  */
 void tx_data(int data, int bytes_to_tx);
 
 /**
+ * @fn int rx_data(int bytes_to_rx)
  * Receive an arbitrary # of bytes of data over the UART
  */
 int rx_data(int bytes_to_rx);
 
 /**
+ * @fn int send_message(int opcode, int data)
  * Initiate a complete message to the STM32
  * @return Reply data from command code
  */
