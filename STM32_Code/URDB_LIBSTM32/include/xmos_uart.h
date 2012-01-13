@@ -8,10 +8,10 @@
 #ifndef XMOS_UART_H_
 #define XMOS_UART_H_
 
-short int cmd_data_bits[35];	// Index of array = opcode, Data in array = # of bytes of data for that opcode
-short int reply_data_bits[35];
-uint8_t cmd_data_bytes[35];
-uint8_t reply_data_bytes[35];
+short int cmd_data_bits[41];	// Index of array = opcode, Data in array = # of bytes of data for that opcode
+short int reply_data_bits[41];
+uint8_t cmd_data_bytes[41];
+uint8_t reply_data_bytes[41];
 
 uint8_t received_control_byte, command;
 
@@ -113,6 +113,10 @@ uint8_t received_control_byte, command;
 #define CMD_SET_DAC_RES		32		// 1-bit			0
 #define CMD_GET_IO_PIN		35		// 5-bit			17-bit
 #define CMD_SET_IO_PIN		36		// 17-bit			0
+#define CMD_GET_U15_PIN		37		// 3-bit			1-bit
+#define CMD_SET_U15_PIN		38		// 4-bit			0
+#define CMD_GET_U15_ALL		39		// 0				8-bit
+#define CMD_SET_U15_ALL		40		// 8-bit			0
 /**
   * @}
   */

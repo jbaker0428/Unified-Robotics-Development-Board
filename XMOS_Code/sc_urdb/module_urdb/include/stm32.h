@@ -15,8 +15,8 @@
 
 int current_adc_res;	// 0 = 12-bit, 1 = 10-bit, 2 = 8-bit, 3 = 6-bit
 int current_dac_res;	// 0 = 12-bit, 1 = 8-bit
-short int cmd_data_widths[37];	// Index of array = opcode, Data in array = # of bits of data for that opcode
-short int reply_data_widths[37];	// Index of array = opcode, Data in array = # of bits of data for that opcode
+short int cmd_data_widths[41];	// Index of array = opcode, Data in array = # of bits of data for that opcode
+short int reply_data_widths[41];	// Index of array = opcode, Data in array = # of bits of data for that opcode
 short int current_opcode;
 short int transfer_in_progress;	// Boolean
 
@@ -99,6 +99,10 @@ short int transfer_in_progress;	// Boolean
 #define	CMD_DAC_CH1_OUT		34		// current_dac_res	0
 #define CMD_GET_IO_PIN		35		// 5-bit			17-bit
 #define CMD_SET_IO_PIN		36		// 17-bit			0
+#define CMD_GET_U15_PIN		37		// 3-bit			1-bit
+#define CMD_SET_U15_PIN		38		// 4-bit			0
+#define CMD_GET_U15_ALL		39		// 0				8-bit
+#define CMD_SET_U15_ALL		40		// 8-bit			0
 
 /**
  * Populate the <cmd/reply>_data_widths[] arrays

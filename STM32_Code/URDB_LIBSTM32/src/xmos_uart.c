@@ -79,6 +79,12 @@ void set_data_widths()
 	cmd_data_bits[32] = 1;
 	cmd_data_bits[33] = dac_bits;
 	cmd_data_bits[34] = dac_bits;
+	cmd_data_bits[35] = 5;
+	cmd_data_bits[36] = 17;
+	cmd_data_bits[37] = 3;
+	cmd_data_bits[38] = 4;
+	cmd_data_bits[39] = 0;
+	cmd_data_bits[40] = 8;
 
 	for (int i=0; i<24; i++)
 	{
@@ -95,6 +101,12 @@ void set_data_widths()
 	reply_data_bits[32] = 0;
 	reply_data_bits[33] = 0;
 	reply_data_bits[34] = 0;
+	reply_data_bits[35] = 17;
+	reply_data_bits[36] = 0;
+	reply_data_bits[37] = 1;
+	reply_data_bits[38] = 0;
+	reply_data_bits[39] = 8;
+	reply_data_bits[40] = 0;
 
 	for (int i=0; i<24; i++)
 	{
@@ -110,7 +122,13 @@ void set_data_widths()
 	cmd_data_bytes[31] = 0;
 	cmd_data_bytes[32] = 1;
 	cmd_data_bytes[33] = dac_bytes;
-	cmd_data_bits[34] = dac_bytes;
+	cmd_data_bytes[34] = dac_bytes;
+	cmd_data_bytes[35] = 1;
+	cmd_data_bytes[36] = 3;
+	cmd_data_bytes[37] = 1;
+	cmd_data_bytes[38] = 1;
+	cmd_data_bytes[39] = 0;
+	cmd_data_bytes[40] = 1;
 
 	for (int i=0; i<24; i++)
 	{
@@ -127,6 +145,12 @@ void set_data_widths()
 	reply_data_bytes[32] = 0;
 	reply_data_bytes[33] = 0;
 	reply_data_bytes[34] = 0;
+	reply_data_bytes[35] = 3;
+	reply_data_bytes[36] = 0;
+	reply_data_bytes[37] = 1;
+	reply_data_bytes[38] = 0;
+	reply_data_bytes[39] = 1;
+	reply_data_bytes[40] = 0;
 }
 
 void uart_clk_out_init(void)
