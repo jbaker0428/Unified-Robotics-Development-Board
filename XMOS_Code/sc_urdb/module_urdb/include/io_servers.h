@@ -51,6 +51,15 @@ void stm32_uart_server(unsigned &server);
 unsigned int io_client_enqueue(unsigned &server, unsigned &client, client_fifo_t &client_fifo,
 		io_request_t &request);
 
+/**
+ * @fn void io_server_enqueue(unsigned &server, unsigned int new_req_chanend, REFERENCE_PARAM(request_fifo_t, req_fifo))
+ * @brief Gets new client request and adds it to the request FIFO
+ * @param server Reference to variable holding the server's resource ID
+ * @param new_req_chanend Resource ID of client chanend making request
+ * @param req_fifo Reference to server's request FIFO
+ */
+void io_server_enqueue(unsigned &server, unsigned int new_req_chanend, REFERENCE_PARAM(request_fifo_t, req_fifo));
+
 #ifdef __cplusplus
 }
 #endif
