@@ -30,6 +30,14 @@
 #define CT_DATA_3B	7
 #define CT_DATA_4B	8
 
+static inline void _chkCT(unsigned int resource_id, unsigned int token) {
+	asm ("chkct res[%0],%1" ::"r"(resource_id),"r"(token));
+}
+
+static inline void _chkCTI(unsigned int resource_id, unsigned int token) {
+	asm ("chkcti res[%0],%1" ::"r"(resource_id),"r"(token));
+}
+
 static inline unsigned int _inToken(unsigned int resource_id) {
   unsigned int ret;
   asm ("int %0,res[%1] ":"=r"(ret):"r"(resource_id));
@@ -66,6 +74,11 @@ static inline void _outInt(unsigned int resource_id, unsigned int data) {
   return;
 }
 
+static inline unsigned int _testCT(unsigned int resource_id) {
+	unsigned int ret;
+	asm("testct %0,res[%1]":"=r"(ret) : "r"(resource_id));
+	return ret;
+}
 
 static inline void _setChanEndDest(unsigned int resource_id, unsigned int dest) {
   asm ("setd res[%0],%1" ::"r"(resource_id),"r"(dest));
