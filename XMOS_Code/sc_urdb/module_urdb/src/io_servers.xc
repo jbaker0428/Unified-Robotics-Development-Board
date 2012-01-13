@@ -34,3 +34,22 @@ unsigned int io_client_enqueue(unsigned &server, unsigned &client, client_fifo_t
 	else
 		return -1;
 }
+
+void io_server_enqueue(unsigned &server, unsigned int new_req_chanend, REFERENCE_PARAM(request_fifo_t, req_fifo))
+{
+	_setChanEndDest(server, new_req_chanend);
+	_chkCTI(server, CT_END);
+	_outCT(server, CT_END);
+	int push_success = request_fifo_push(req_fifo, new_req_chanend);
+
+	if(push_success)
+	{
+		_outCT(server, CT_ACK);
+		_outCT(server, CT_END);
+	}
+	else
+	{
+		_outCT(server, CT_NACK);
+		_outCT(server, CT_END);
+	}
+}
