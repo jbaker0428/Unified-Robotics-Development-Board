@@ -10,7 +10,7 @@
 #include "stm32.h"
 
 unsigned int io_client_enqueue(unsigned &server, unsigned &client, client_fifo_t &client_fifo,
-		int data, int data_len, REFERENCE_PARAM(int, ret_data))
+		io_request_t &request)
 {
 	unsigned int server_ack;
 
@@ -26,7 +26,7 @@ unsigned int io_client_enqueue(unsigned &server, unsigned &client, client_fifo_t
 	if(server_ack == CT_ACK)
 	{
 		// Success, add to client FIFO
-		client_fifo_push(client_fifo, data, server, data_len, ret_data);
+		client_fifo_push(client_fifo, request);
 		return server_ack;
 	}
 	else if (server_ack == CT_NACK)

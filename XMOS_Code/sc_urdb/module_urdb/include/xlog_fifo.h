@@ -16,6 +16,13 @@
 
 #define XLOG_REQUEST_FIFO_LEN 32
 
+typedef struct io_request_t {
+	unsigned int data;			// Data to transmit
+	unsigned char data_len;		// Number of IO bus words to transmit
+	REFERENCE_PARAM(unsigned, ret_data);	// Where to save reply data
+	unsigned char serviced;		// Status flag
+} io_request_t;
+
 typedef struct msg_fifo_t {
   int rdIndex;
   int wrIndex;
@@ -32,10 +39,8 @@ typedef struct request_fifo_t {
 typedef struct client_fifo_t {
 	int rdIndex;
 	int wrIndex;
-	int data_fifo[XLOG_REQUEST_FIFO_LEN];
+	io_request_t request_fifo[XLOG_REQUEST_FIFO_LEN];
 	int server;		// Resource ID of server associated with the FIFO
-	unsigned char length_fifo[XLOG_REQUEST_FIFO_LEN];
-	int return_fifo[XLOG_REQUEST_FIFO_LEN];	// Reference to return data var
 } client_fifo_t;
 
 #define isempty(x) (x.rdIndex == x.wrIndex)
@@ -48,11 +53,9 @@ void request_fifo_init(REFERENCE_PARAM(request_fifo_t, x));
 int request_fifo_push(REFERENCE_PARAM(request_fifo_t, x), unsigned int d);
 unsigned int  request_fifo_pull(REFERENCE_PARAM(request_fifo_t, x));
 
-void client_fifo_init(REFERENCE_PARAM(client_fifo_t, x));
-void client_fifo_push(REFERENCE_PARAM(client_fifo_t, x), int data, int server_id,
-		unsigned char length_token, REFERENCE_PARAM(int, ret_ref));
+void client_fifo_init(REFERENCE_PARAM(client_fifo_t, x), unsigned &server);
+void client_fifo_push(REFERENCE_PARAM(client_fifo_t, x), REFERENCE_PARAM(io_request_t, r));
 
-void client_fifo_pull(REFERENCE_PARAM(client_fifo_t, x), REFERENCE_PARAM(unsigned int, data),
-		REFERENCE_PARAM(int, server_id), REFERENCE_PARAM(unsigned char, length_token), REFERENCE_PARAM(int, ret_ref));
+void client_fifo_pull(REFERENCE_PARAM(client_fifo_t, x), REFERENCE_PARAM(io_request_t, r));
 
 #endif //_xlog_fifo_h_
