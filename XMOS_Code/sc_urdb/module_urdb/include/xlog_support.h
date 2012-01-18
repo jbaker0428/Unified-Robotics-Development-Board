@@ -21,15 +21,6 @@
 #define _QUOTEME(x) #x
 #define QUOTEME(x) _QUOTEME(x)
 
-#define CT_END		1
-#define CT_PAUSE	2
-#define CT_ACK		3
-#define CT_NACK 	4
-#define CT_DATA_1B	5
-#define CT_DATA_2B	6
-#define CT_DATA_3B	7
-#define CT_DATA_4B	8
-
 static inline void _chkCT(unsigned int resource_id, unsigned int token) {
 	asm ("chkct res[%0],%1" ::"r"(resource_id),"r"(token));
 }
