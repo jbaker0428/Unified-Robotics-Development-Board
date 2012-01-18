@@ -56,8 +56,8 @@ void set_data_widths()
 	cmd_data_widths[32] = 1;
 	cmd_data_widths[33] = dac_bits;
 	cmd_data_widths[34] = dac_bits;
-	cmd_data_widths[35] = 5;
-	cmd_data_widths[36] = 17;
+	cmd_data_widths[35] = 6;
+	cmd_data_widths[36] = 18;
 	cmd_data_widths[37] = 3;
 	cmd_data_widths[38] = 4;
 	cmd_data_widths[39] = 0;
@@ -78,7 +78,7 @@ void set_data_widths()
 	reply_data_widths[32] = 0;
 	reply_data_widths[33] = 0;
 	reply_data_widths[34] = 0;
-	reply_data_widths[35] = 17;
+	reply_data_widths[35] = 18;
 	reply_data_widths[36] = 0;
 	reply_data_widths[37] = 1;
 	reply_data_widths[38] = 0;

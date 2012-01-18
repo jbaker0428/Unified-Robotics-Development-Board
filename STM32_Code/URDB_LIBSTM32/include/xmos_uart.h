@@ -111,8 +111,8 @@ uint8_t received_control_byte, command;
 #define CMD_SET_RTC_DATE	30		// 24-bit			0
 #define CMD_GET_DAC_RES		31		// 0				1-bit
 #define CMD_SET_DAC_RES		32		// 1-bit			0
-#define CMD_GET_IO_PIN		35		// 5-bit			17-bit
-#define CMD_SET_IO_PIN		36		// 17-bit			0
+#define CMD_GET_IO_PIN		35		// 6-bit			18-bit
+#define CMD_SET_IO_PIN		36		// 18-bit			0
 #define CMD_GET_U15_PIN		37		// 3-bit			1-bit
 #define CMD_SET_U15_PIN		38		// 4-bit			0
 #define CMD_GET_U15_ALL		39		// 0				8-bit
