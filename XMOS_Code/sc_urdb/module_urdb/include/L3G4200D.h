@@ -8,6 +8,11 @@
 #ifndef L3G4200D_H_
 #define L3G4200D_H_
 
+#define L3G4200D_WHO_AM_I	0xD3
+#define L3GD20_WHO_AM_I		0xD4
+#define L3G4200D_SLAVE_ADDR	0b1101001
+#define L3GD20_SLAVE_ADDR	0b1101011
+
 // Registers						Address		Read/write type
 #define	L3G4200D_REG_WHO_AM_I		0x0F		// Read only
 #define	L3G4200D_REG_CTRL_1			0x20		// Read/Write
