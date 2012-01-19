@@ -8,11 +8,6 @@
 #include "urdb.h"
 #include "stm32.h"
 
-on stdcore[0]: in	port stm32_clk = PORT_STM32_CLK;
-on stdcore[0]: out buffered port:8 stm32_tx = PORT_STM32_TX;
-on stdcore[0]: in	buffered port:8 stm32_rx = PORT_STM32_RX;
-on stdcore[0]: clock stm32_uart_clk = XS1_CLKBLK_5;
-
 void set_data_widths()
 {
 	int adc_bits, dac_bits;
@@ -96,13 +91,6 @@ void stm32_uart_init()
 	configure_in_port(rx, stm32_uart_clk);
 	configure_out_port_no_ready(tx, stm32_uart_clk, 1);
 	start_clock(stm32_uart_clk);
-
-	// wait for rx:
-	while(1)
-	{
-		rx_byte();
-		// TODO: Process data
-	}
 }
 
 int send_message(int opcode, int data)

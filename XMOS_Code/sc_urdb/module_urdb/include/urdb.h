@@ -60,6 +60,10 @@ unsigned pwm_chanend;
 unsigned navigation_chanend;
 
 on stdcore[PWM_CORE] : out buffered port:32 pwm_ports[] = { PORT_PWM_0, PORT_PWM_1, PORT_PWM_2, PORT_SERVO_0, PORT_SERVO_1, PORT_SERVO_2, PORT_SERVO_3, PORT_SERVO_4, PORT_SERVO_5 };
+on stdcore[STM32_CORE]: in	port stm32_clk = PORT_STM32_CLK;
+on stdcore[STM32_CORE]: out buffered port:8 stm32_tx = PORT_STM32_TX;
+on stdcore[STM32_CORE]: in	buffered port:8 stm32_rx = PORT_STM32_RX;
+on stdcore[STM32_CORE]: clock stm32_uart_clk = XS1_CLKBLK_5;
 
 clock ref0;
 clock ref1;
