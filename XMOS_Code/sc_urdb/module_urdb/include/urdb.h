@@ -41,15 +41,21 @@
 
 
 /**
- * @var i2c_chanend Resource ID for the I2C IO server input chanend
- * @var spi_chanend Resource ID for the SPI IO server input chanend
- * @var stm32_uart_chanend Resource ID for the STM32 UART IO server input chanend
+ * @var i2c_req_ch Resource ID for the I2C IO server request input chanend
+ * @var i2c_service_ch Resource ID for the I2C IO server request servicing chanend
+ * @var spi_req_ch Resource ID for the SPI IO server request input chanend
+ * @var spi_service_ch Resource ID for the SPI IO server request servicing chanend
+ * @var stm32_req_ch Resource ID for the STM32 UART IO server request input chanend
+ * @var stm32_service_ch Resource ID for the STM32 UART IO server request servicing chanend
  * @var pwm_chanend Resource ID for the PWM thread input chanend
  * @var navigation_chanend Resource ID for the navigation thread input chanend
  */
-unsigned i2c_chanend;
-unsigned spi_chanend;
-unsigned stm32_uart_chanend;
+unsigned i2c_req_ch;
+unsigned i2c_service_ch;
+unsigned spi_req_ch;
+unsigned spi_service_ch;
+unsigned stm32_req_ch;
+unsigned stm32_service_ch;
 unsigned pwm_chanend;
 unsigned navigation_chanend;
 

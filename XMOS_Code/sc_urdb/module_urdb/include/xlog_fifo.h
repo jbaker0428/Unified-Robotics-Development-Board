@@ -40,7 +40,8 @@ typedef struct client_fifo_t {
 	int rdIndex;
 	int wrIndex;
 	io_request_t request_fifo[XLOG_REQUEST_FIFO_LEN];
-	int server;		// Resource ID of server associated with the FIFO
+	int server_req;		// Resource ID of server associated with the FIFO
+	int server_service;		// Resource ID of server associated with the FIFO
 } client_fifo_t;
 
 #define isempty(x) (x.rdIndex == x.wrIndex)
@@ -53,7 +54,7 @@ void request_fifo_init(REFERENCE_PARAM(request_fifo_t, x));
 int request_fifo_push(REFERENCE_PARAM(request_fifo_t, x), unsigned int d);
 unsigned int  request_fifo_pull(REFERENCE_PARAM(request_fifo_t, x));
 
-void client_fifo_init(REFERENCE_PARAM(client_fifo_t, x), unsigned &server);
+void client_fifo_init(REFERENCE_PARAM(client_fifo_t, x), unsigned &server_req, unsigned &server_service);
 void client_fifo_push(REFERENCE_PARAM(client_fifo_t, x), REFERENCE_PARAM(io_request_t, r));
 
 void client_fifo_pull(REFERENCE_PARAM(client_fifo_t, x), REFERENCE_PARAM(io_request_t, r));

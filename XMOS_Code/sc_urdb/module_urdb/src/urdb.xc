@@ -19,15 +19,18 @@ void urdb_init()
 	// Allocate chanend resources for the IO servers/other threads and save the resource IDs
 	par
 	{
-		on stdcore[I2C_CORE] : i2c_chanend = _getChanEnd();
-		on stdcore[SPI_CORE] : spi_chanend = _getChanEnd();
-		on stdcore[STM32_CORE] : stm32_uart_chanend = _getChanEnd();
+		on stdcore[I2C_CORE] : i2c_req_ch = _getChanEnd();
+		on stdcore[I2C_CORE] : i2c_service_ch = _getChanEnd();
+		on stdcore[SPI_CORE] : spi_req_ch = _getChanEnd();
+		on stdcore[SPI_CORE] : spi_service_ch = _getChanEnd();
+		on stdcore[STM32_CORE] : stm32_req_ch = _getChanEnd();
+		on stdcore[STM32_CORE] : stm32_service_ch = _getChanEnd();
 		on stdcore[PWM_CORE] : pwm_chanend = _getChanEnd();
 		on stdcore[NAVIGATION_CORE] : navigation_chanend = _getChanEnd();
 	}
 
 	// Check for successful allocation of chanends
-	if(!i2c_chanend || !spi_chanend || !stm32_uart_chanend || !pwm_chanend || !navigation_chanend)
+	if(!i2c_req_ch || !i2c_service_ch || !spi_req_ch || !spi_service_ch || !stm32_req_ch || !stm32_service_ch || !pwm_chanend || !navigation_chanend)
 		return;
 
 	// Initialize clocks
@@ -40,9 +43,9 @@ void urdb_init()
 	// Execute all URDB threads
 	par
 	{
-		on stdcore[I2C_CORE] : i2c_server(&i2c_chanend);
-		on stdcore[SPI_CORE] : spi_server(&spi_chanend);
-		on stdcore[STM32_CORE] : stm32_uart_server(&stm32_uart_chanend);
+		on stdcore[I2C_CORE] : i2c_server(&i2c_req_ch, &i2c_service_ch);
+		on stdcore[SPI_CORE] : spi_server(&spi_req_ch, &spi_service_ch);
+		on stdcore[STM32_CORE] : stm32_uart_server(&stm32_req_ch, &stm32_service_ch);
 		on stdcore[PWM_CORE] : pwmSingleBitPort(pwm_chanend, ref1, pwm_ports,
 			    PWM_NUM_PORTS, PWM_RESOLUTION, PWM_TIMESTEP, 1);
 		// on stdcore[NAVIGATION_CORE] : Navigation thread
