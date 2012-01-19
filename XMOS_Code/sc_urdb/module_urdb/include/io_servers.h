@@ -12,6 +12,16 @@
 #ifndef SCHEDULER_H_
 #define SCHEDULER_H_
 
+#define XS1_CT_TX1	0x5
+#define XS1_CT_TX2	0x6
+#define XS1_CT_TX3	0x7
+#define XS1_CT_TX4	0x8
+#define XS1_CT_RX0	0x9
+#define XS1_CT_RX1	0xA
+#define XS1_CT_RX2	0xB
+#define XS1_CT_RX3	0xC
+#define XS1_CT_RX4	0xD
+
 enum protocol {I2C, SPI, UART};
 
 #ifdef __cplusplus
