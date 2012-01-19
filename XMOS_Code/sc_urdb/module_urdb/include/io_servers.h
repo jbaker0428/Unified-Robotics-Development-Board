@@ -9,18 +9,23 @@
 #include "xlog_fifo.h"
 #include "xlog_support.h"
 
-#ifndef SCHEDULER_H_
-#define SCHEDULER_H_
+#ifndef IO_SERVERS_H_
+#define IO_SERVERS_H_
 
-#define XS1_CT_TX1	0x5
-#define XS1_CT_TX2	0x6
-#define XS1_CT_TX3	0x7
-#define XS1_CT_TX4	0x8
-#define XS1_CT_RX0	0x9
-#define XS1_CT_RX1	0xA
-#define XS1_CT_RX2	0xB
-#define XS1_CT_RX3	0xC
-#define XS1_CT_RX4	0xD
+#define XS1_CT_TX0	0x5
+#define XS1_CT_TX1	0x6
+#define XS1_CT_TX2	0x7
+#define XS1_CT_TX3	0x8
+#define XS1_CT_TX4	0x9
+#define XS1_CT_RX0	0xA
+#define XS1_CT_RX1	0xB
+#define XS1_CT_RX2	0xC
+#define XS1_CT_RX3	0xD
+#define XS1_CT_RX4	0xE
+#define XS1_CT_ERR	0xF
+
+#define INITIAL_UART_DELAY 100000000
+#define CUSHION_TIME 100
 
 enum protocol {I2C, SPI, UART};
 
@@ -52,8 +57,11 @@ void spi_server(unsigned &req_ch, unsigned &service_ch);
  */
 void stm32_uart_server(unsigned &req_ch, unsigned &service_ch);
 
+unsigned int set_tx_length(unsigned int ct);
+unsigned int set_rx_length(unsigned int ct);
+
 /**
- * @fn void uart_service_request(unsigned &server, NULLABLE_REFERENCE_PARAM(unsigned, client), request_fifo_t &request_fifo, msg_fifo_t &msg_fifo)
+ * @fn int uart_service_request(unsigned &server, NULLABLE_REFERENCE_PARAM(unsigned, client), request_fifo_t &request_fifo, msg_fifo_t &msg_fifo)
  * @brief Services UART server requests
  * @param &req_ch Reference to variable holding the server's request channel resource ID
  * @param &service_ch Reference to variable holding the server's service channel resource ID
@@ -61,7 +69,7 @@ void stm32_uart_server(unsigned &req_ch, unsigned &service_ch);
  * @param request_fifo Server's request FIFO
  * @param msg_fifo Server's message FIFO
  */
-void uart_service_request(unsigned &req_ch, unsigned &service_ch, NULLABLE_RESOURCE(unsigned, client_ch),
+int uart_service_request(unsigned &req_ch, unsigned &service_ch, NULLABLE_RESOURCE(unsigned, client_ch),
 		request_fifo_t &request_fifo, msg_fifo_t &msg_fifo);
 
 /**
@@ -90,4 +98,4 @@ void io_server_enqueue(unsigned &req_ch, unsigned &service_ch, unsigned int new_
 #ifdef __cplusplus
 }
 #endif
-#endif /* IO_SCHEDULER_H_ */
+#endif /* IO_SERVERS_H_ */
