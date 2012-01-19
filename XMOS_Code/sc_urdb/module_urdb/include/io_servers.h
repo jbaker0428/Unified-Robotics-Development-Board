@@ -67,10 +67,10 @@ unsigned int set_rx_length(unsigned int ct);
  * @param &service_ch Reference to variable holding the server's service channel resource ID
  * @param client_ch Resource ID of remote client chanend
  * @param request_fifo Server's request FIFO
- * @param msg_fifo Server's message FIFO
+ * @return Returns 0 if successful
  */
 int uart_service_request(unsigned &req_ch, unsigned &service_ch, NULLABLE_RESOURCE(unsigned, client_ch),
-		request_fifo_t &request_fifo, msg_fifo_t &msg_fifo);
+		request_fifo_t &request_fifo);
 
 /**
  * @fn unsigned int io_client_enqueue(unsigned &server, unsigned &client, client_fifo_t &client_fifo, int data, int data_len, REFERENCE_PARAM(int, ret_data))

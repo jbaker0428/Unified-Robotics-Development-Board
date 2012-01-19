@@ -58,12 +58,10 @@ void io_server_enqueue(unsigned &req_ch, unsigned &service_ch, unsigned int new_
 void stm32_uart_server(unsigned &req_ch, unsigned &service_ch)
 {
 	request_fifo_t request_fifo;
-	msg_fifo_t msg_fifo;
 	int connected;
 	chanend current_dest;
 
 	request_fifo_init(&request_fifo);
-	msg_fifo_init(&msg_fifo);
 
 	configure_clock_src(stm32_uart_clk, stm32_clk);
 	configure_in_port(rx, stm32_uart_clk);
@@ -86,7 +84,7 @@ void stm32_uart_server(unsigned &req_ch, unsigned &service_ch)
 			_chkCTI(service_ch, XS1_CT_END);
 		}
 
-		uart_service_request(&req_ch, &service_ch, current_dest, &request_fifo, &msg_fifo);
+		uart_service_request(&req_ch, &service_ch, current_dest, &request_fifo);
 
 	}
 }
@@ -124,7 +122,7 @@ unsigned int set_rx_length(unsigned int ct)
 }
 
 int uart_service_request(unsigned &req_ch, unsigned &service_ch, NULLABLE_REFERENCE_PARAM(unsigned, client),
-		request_fifo_t &request_fifo, msg_fifo_t &msg_fifo)
+		request_fifo_t &request_fifo)
 {
 	timer tx_tmr, rx_tmr;
 	int len = isnull(service_ch)?0:-1;
