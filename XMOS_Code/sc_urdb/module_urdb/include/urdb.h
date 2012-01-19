@@ -53,6 +53,8 @@ unsigned stm32_uart_chanend;
 unsigned pwm_chanend;
 unsigned navigation_chanend;
 
+on stdcore[PWM_CORE] : out buffered port:32 pwm_ports[] = { PORT_PWM_0, PORT_PWM_1, PORT_PWM_2, PORT_SERVO_0, PORT_SERVO_1, PORT_SERVO_2, PORT_SERVO_3, PORT_SERVO_4, PORT_SERVO_5 };
+
 clock ref0;
 clock ref1;
 

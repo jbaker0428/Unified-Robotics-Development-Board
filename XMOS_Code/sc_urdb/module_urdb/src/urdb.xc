@@ -37,9 +37,6 @@ void urdb_init()
 		on stdcore[1] : ref1 = XS1_CLKBLK_1;
 	}
 
-	// Initialize essential ports that are not initialized elsewhere
-	on stdcore[PWM_CORE] : out buffered port:32 pwm_ports[] = { PORT_PWM_0, PORT_PWM_1, PORT_PWM_2, PORT_SERVO_0, PORT_SERVO_1, PORT_SERVO_2, PORT_SERVO_3, PORT_SERVO_4, PORT_SERVO_5 };
-
 	// Execute all URDB threads
 	par
 	{
