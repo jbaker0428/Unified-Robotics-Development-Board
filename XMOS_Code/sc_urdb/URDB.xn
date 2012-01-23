@@ -36,6 +36,10 @@ xsi:schemaLocation="http://www.xmos.com http://www.xmos.com">
 			<Port Location="XS1_PORT_1I" Name="PORT_STM32_TX"/>
 			<Port Location="XS1_PORT_1E" Name="PORT_STM32_RX"/>
 			
+				<!--  XBEE UART -->
+			<Port Location="XS1_PORT_1F" Name="PORT_XBEE_RX"/>
+			<Port Location="XS1_PORT_1H" Name="PORT_XBEE_TX"/>
+			
 
           </Core>
           
