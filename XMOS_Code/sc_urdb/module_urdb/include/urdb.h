@@ -81,8 +81,10 @@ clock ref1;
  * Before beginning thread execution, the chanend resources for the IO servers are allocated
  * and their resource IDs are saved to global vars.
  *
+ * @param xbee_mode Boolean argument to run the XBEE UART I/O server. Pass one of the XBEE_MODE macros from io_servers.h.
+ *
  */
-void urdb_init(void);
+void urdb_init(unsigned char xbee_mode);
 
 
 #endif /* URDB_H_ */

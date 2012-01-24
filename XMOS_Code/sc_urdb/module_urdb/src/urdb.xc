@@ -14,7 +14,7 @@
 #define PWM_NUM_PORTS 9
 #define PWM_TIMESTEP 10
 
-void urdb_init()
+void urdb_init(unsigned char xbee_mode)
 {
 	// Allocate chanend resources for the IO servers/other threads and save the resource IDs
 	par
