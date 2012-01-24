@@ -69,15 +69,15 @@ unsigned int set_tx_length(unsigned int ct);
 unsigned int set_rx_length(unsigned int ct);
 
 /**
- * @fn int uart_service_request(unsigned &server, NULLABLE_REFERENCE_PARAM(unsigned, client), request_fifo_t &request_fifo, msg_fifo_t &msg_fifo)
- * @brief Services UART server requests
+ * @fn int stm32_service_request(unsigned &server, NULLABLE_REFERENCE_PARAM(unsigned, client), request_fifo_t &request_fifo, msg_fifo_t &msg_fifo)
+ * @brief Services STM32 UART server requests
  * @param &req_ch Reference to variable holding the server's request channel resource ID
  * @param &service_ch Reference to variable holding the server's service channel resource ID
  * @param client_ch Resource ID of remote client chanend
  * @param request_fifo Server's request FIFO
  * @return Returns 0 if successful
  */
-int uart_service_request(unsigned &req_ch, unsigned &service_ch, NULLABLE_RESOURCE(unsigned, client_ch),
+int stm32_service_request(unsigned &req_ch, unsigned &service_ch, NULLABLE_RESOURCE(unsigned, client_ch),
 		request_fifo_t &request_fifo);
 
 /**

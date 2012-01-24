@@ -84,7 +84,7 @@ void stm32_uart_server(unsigned &req_ch, unsigned &service_ch)
 			_chkCTI(service_ch, XS1_CT_END);
 		}
 
-		uart_service_request(&req_ch, &service_ch, current_dest, &request_fifo);
+		stm32_service_request(&req_ch, &service_ch, current_dest, &request_fifo);
 
 	}
 }
@@ -121,7 +121,7 @@ unsigned int set_rx_length(unsigned int ct)
 		return ct; // Error condition -- return control token for debugging
 }
 
-int uart_service_request(unsigned &req_ch, unsigned &service_ch, NULLABLE_REFERENCE_PARAM(unsigned, client),
+int stm32_service_request(unsigned &req_ch, unsigned &service_ch, NULLABLE_REFERENCE_PARAM(unsigned, client),
 		request_fifo_t &request_fifo)
 {
 	timer tx_tmr, rx_tmr;
