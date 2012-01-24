@@ -44,13 +44,43 @@ void urdb_init(unsigned char xbee_mode)
 	}
 
 	// Execute all URDB threads
-	par
+	if(xbee_mode == XBEE_MODE_API)
 	{
-		on stdcore[I2C_CORE] : i2c_server(&i2c_req_ch, &i2c_service_ch);
-		on stdcore[SPI_CORE] : spi_server(&spi_req_ch, &spi_service_ch);
-		on stdcore[STM32_CORE] : stm32_uart_server(&stm32_req_ch, &stm32_service_ch);
-		on stdcore[PWM_CORE] : pwmSingleBitPort(pwm_chanend, ref1, pwm_ports,
-			    PWM_NUM_PORTS, PWM_RESOLUTION, PWM_TIMESTEP, 1);
-		// on stdcore[NAVIGATION_CORE] : Navigation thread
+		par
+		{
+			on stdcore[I2C_CORE] : i2c_server(&i2c_req_ch, &i2c_service_ch);
+			on stdcore[SPI_CORE] : spi_server(&spi_req_ch, &spi_service_ch);
+			on stdcore[STM32_CORE] : stm32_uart_server(&stm32_req_ch, &stm32_service_ch);
+			on stdcore[PWM_CORE] : pwmSingleBitPort(pwm_chanend, ref1, pwm_ports,
+				    PWM_NUM_PORTS, PWM_RESOLUTION, PWM_TIMESTEP, 1);
+			// on stdcore[NAVIGATION_CORE] : Navigation thread
+			on stdcore[XBEE_CORE] : xbee_api_server(&xbee_req_ch, &xbee_service_ch);
+		}
 	}
+	else if(xbee_mode == XBEE_MODE_TRANSPARENT)
+	{
+		par
+		{
+			on stdcore[I2C_CORE] : i2c_server(&i2c_req_ch, &i2c_service_ch);
+			on stdcore[SPI_CORE] : spi_server(&spi_req_ch, &spi_service_ch);
+			on stdcore[STM32_CORE] : stm32_uart_server(&stm32_req_ch, &stm32_service_ch);
+			on stdcore[PWM_CORE] : pwmSingleBitPort(pwm_chanend, ref1, pwm_ports,
+				    PWM_NUM_PORTS, PWM_RESOLUTION, PWM_TIMESTEP, 1);
+			// on stdcore[NAVIGATION_CORE] : Navigation thread
+			on stdcore[XBEE_CORE] : xbee_transparent_server(&xbee_req_ch, &xbee_service_ch);
+		}
+	}
+	else
+	{
+		par
+		{
+			on stdcore[I2C_CORE] : i2c_server(&i2c_req_ch, &i2c_service_ch);
+			on stdcore[SPI_CORE] : spi_server(&spi_req_ch, &spi_service_ch);
+			on stdcore[STM32_CORE] : stm32_uart_server(&stm32_req_ch, &stm32_service_ch);
+			on stdcore[PWM_CORE] : pwmSingleBitPort(pwm_chanend, ref1, pwm_ports,
+				    PWM_NUM_PORTS, PWM_RESOLUTION, PWM_TIMESTEP, 1);
+			// on stdcore[NAVIGATION_CORE] : Navigation thread
+		}
+	}
+
 }
