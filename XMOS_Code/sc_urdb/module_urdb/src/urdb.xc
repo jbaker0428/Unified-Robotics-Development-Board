@@ -33,7 +33,9 @@ void urdb_init(unsigned char xbee_mode)
 
 
 	// Check for successful allocation of chanends
-	if(!i2c_req_ch || !i2c_service_ch || !spi_req_ch || !spi_service_ch || !stm32_req_ch || !stm32_service_ch || !pwm_chanend || !navigation_chanend)
+	if(!i2c_req_ch || !i2c_service_ch || !spi_req_ch || !spi_service_ch ||
+			!stm32_req_ch || !stm32_service_ch || !pwm_chanend ||
+			!navigation_chanend || !xbee_req_ch || !xbee_service_ch)
 		return;
 
 	// Initialize clocks
