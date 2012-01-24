@@ -21,6 +21,7 @@
 #define I2C_CORE		1
 #define SPI_CORE		0
 #define STM32_CORE		0
+#define XBEE_CORE		0
 /**
  * @def PWM_CORE
  * Sets which core the PWM thread is to be run on.
@@ -56,6 +57,8 @@ unsigned spi_req_ch;
 unsigned spi_service_ch;
 unsigned stm32_req_ch;
 unsigned stm32_service_ch;
+unsigned stm32_req_ch;
+unsigned stm32_service_ch;
 unsigned pwm_chanend;
 unsigned navigation_chanend;
 
@@ -64,6 +67,8 @@ on stdcore[STM32_CORE]: in	port stm32_clk = PORT_STM32_CLK;
 on stdcore[STM32_CORE]: out buffered port:8 stm32_tx = PORT_STM32_TX;
 on stdcore[STM32_CORE]: in	buffered port:8 stm32_rx = PORT_STM32_RX;
 on stdcore[STM32_CORE]: clock stm32_uart_clk = XS1_CLKBLK_5;
+on stdcore[XBEE_CORE]: out	buffered port:8 xbee_tx = PORT_XBEE_TX;
+on stdcore[XBEE_CORE]: in	buffered port:8 xbee_rx = PORT_XBEE_RX;
 
 clock ref0;
 clock ref1;

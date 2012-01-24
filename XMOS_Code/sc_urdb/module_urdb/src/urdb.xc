@@ -25,9 +25,12 @@ void urdb_init()
 		on stdcore[SPI_CORE] : spi_service_ch = _getChanEnd();
 		on stdcore[STM32_CORE] : stm32_req_ch = _getChanEnd();
 		on stdcore[STM32_CORE] : stm32_service_ch = _getChanEnd();
+		on stdcore[XBEE_CORE] : xbee_req_ch = _getChanEnd();
+		on stdcore[XBEE_CORE] : xbee_service_ch = _getChanEnd();
 		on stdcore[PWM_CORE] : pwm_chanend = _getChanEnd();
 		on stdcore[NAVIGATION_CORE] : navigation_chanend = _getChanEnd();
 	}
+
 
 	// Check for successful allocation of chanends
 	if(!i2c_req_ch || !i2c_service_ch || !spi_req_ch || !spi_service_ch || !stm32_req_ch || !stm32_service_ch || !pwm_chanend || !navigation_chanend)

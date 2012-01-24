@@ -74,7 +74,7 @@
 </folderInfo>
 <sourceEntries>
 <entry excluding="module_urdb/src|src" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
-<entry excluding="scheduler_helpers.xc" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="module_urdb/src"/>
+<entry excluding="scheduler_helpers.xc" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="module_urdb/src"/>
 </sourceEntries>
 </configuration>
 </storageModule>
