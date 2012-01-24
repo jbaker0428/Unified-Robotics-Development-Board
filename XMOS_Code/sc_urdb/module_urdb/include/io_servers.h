@@ -57,6 +57,14 @@ void spi_server(unsigned &req_ch, unsigned &service_ch);
  */
 void stm32_uart_server(unsigned &req_ch, unsigned &service_ch);
 
+/**
+ * @fn void xbee_uart_server(void)
+ * @brief URDB XBee UART scheduler server
+ * @param &req_ch Reference to variable holding the server's request channel resource ID
+ * @param &service_ch Reference to variable holding the server's service channel resource ID
+ */
+void xbee_uart_server(unsigned &req_ch, unsigned &service_ch);
+
 unsigned int set_tx_length(unsigned int ct);
 unsigned int set_rx_length(unsigned int ct);
 
