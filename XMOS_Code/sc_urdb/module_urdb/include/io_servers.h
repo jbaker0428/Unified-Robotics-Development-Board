@@ -27,6 +27,10 @@
 #define INITIAL_UART_DELAY 100000000
 #define CUSHION_TIME 100
 
+#define XBEE_MODE_DISABLE		0
+#define XBEE_MODE_TRANSPARENT	1
+#define XBEE_MODE_API			2
+
 enum protocol {I2C, SPI, UART};
 
 #ifdef __cplusplus
@@ -58,12 +62,20 @@ void spi_server(unsigned &req_ch, unsigned &service_ch);
 void stm32_uart_server(unsigned &req_ch, unsigned &service_ch);
 
 /**
- * @fn void xbee_uart_server(void)
- * @brief URDB XBee UART scheduler server
+ * @fn void xbee_transparent_server(void)
+ * @brief URDB XBee UART scheduler server (XBee Transparent mode)
  * @param &req_ch Reference to variable holding the server's request channel resource ID
  * @param &service_ch Reference to variable holding the server's service channel resource ID
  */
-void xbee_uart_server(unsigned &req_ch, unsigned &service_ch);
+void xbee_transparent_server(unsigned &req_ch, unsigned &service_ch);
+
+/**
+ * @fn void xbee_api_server(void)
+ * @brief URDB XBee UART scheduler server (XBee api mode)
+ * @param &req_ch Reference to variable holding the server's request channel resource ID
+ * @param &service_ch Reference to variable holding the server's service channel resource ID
+ */
+void xbee_api_server(unsigned &req_ch, unsigned &service_ch);
 
 unsigned int set_tx_length(unsigned int ct);
 unsigned int set_rx_length(unsigned int ct);
