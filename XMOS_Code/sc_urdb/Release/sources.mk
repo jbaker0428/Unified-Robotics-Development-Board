@@ -26,6 +26,7 @@ C_UPPER_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
-src \
+module_urdb/src \
+module_pwm_singlebit_port_ur/src \
 . \
 

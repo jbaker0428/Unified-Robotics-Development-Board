@@ -9,7 +9,8 @@ RM = rm -rf $(1)
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include subdir.mk
--include src/subdir.mk
+-include module_urdb/src/subdir.mk
+-include module_pwm_singlebit_port_ur/src/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -41,19 +42,19 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: libURDBLib_Release.a
+all: libsc_urdb.a
 
 # Tool invocations
-libURDBLib_Release.a: $(OBJS) $(XN_SRCS) $(USER_OBJS)
+libsc_urdb.a: $(OBJS) $(XN_SRCS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Archiver'
-	xmosar -r libURDBLib_Release.a $(OBJS) $(USER_OBJS) $(LIBS) $(XN_SRCS)
+	xmosar -r libsc_urdb.a $(OBJS) $(USER_OBJS) $(LIBS) $(XN_SRCS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(call RM, $(C++_DEPS)$(OBJS)$(C_DEPS)$(CC_DEPS)$(ARCHIVES)$(XC_DEPS)$(CPP_DEPS)$(CXX_DEPS)$(C_UPPER_DEPS) libURDBLib_Release.a)
+	-$(call RM, $(C++_DEPS)$(OBJS)$(C_DEPS)$(CC_DEPS)$(ARCHIVES)$(XC_DEPS)$(CPP_DEPS)$(CXX_DEPS)$(C_UPPER_DEPS) libsc_urdb.a)
 	-@echo ' '
 
 .PHONY: all clean dependents
