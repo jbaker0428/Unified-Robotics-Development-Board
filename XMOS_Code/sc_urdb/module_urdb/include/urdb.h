@@ -57,8 +57,8 @@ unsigned spi_req_ch;
 unsigned spi_service_ch;
 unsigned stm32_req_ch;
 unsigned stm32_service_ch;
-unsigned stm32_req_ch;
-unsigned stm32_service_ch;
+unsigned xbee_req_ch;
+unsigned xbee_service_ch;
 unsigned pwm_chanend;
 unsigned navigation_chanend;
 
