@@ -256,7 +256,7 @@ int stm32_service_request(unsigned &req_ch, unsigned &service_ch, NULLABLE_REFER
 		 *
 		 * Sending the data requested by the client thread is not an option, as
 		 * doing so could cause unexpected behavior from the STM32 if applied
-		 * to the IO pins or U15. Given that some sort of malfunction is
+		 * to the IO pins or U16. Given that some sort of malfunction is
 		 * occurring, the safest data to send in this scenario is a full packet
 		 * of zeroes. This will ensure that if the command data is used for
 		 * undesired actuator control, it will set those actuators to their off state.

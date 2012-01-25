@@ -113,10 +113,10 @@ uint8_t received_control_byte, command;
 #define CMD_SET_DAC_RES		32		// 1-bit			0
 #define CMD_GET_IO_PIN		35		// 6-bit			18-bit
 #define CMD_SET_IO_PIN		36		// 18-bit			0
-#define CMD_GET_U15_PIN		37		// 3-bit			1-bit
-#define CMD_SET_U15_PIN		38		// 4-bit			0
-#define CMD_GET_U15_ALL		39		// 0				8-bit
-#define CMD_SET_U15_ALL		40		// 8-bit			0
+#define CMD_GET_U16_PIN		37		// 3-bit			1-bit
+#define CMD_SET_U16_PIN		38		// 4-bit			0
+#define CMD_GET_U16_ALL		39		// 0				8-bit
+#define CMD_SET_U16_ALL		40		// 8-bit			0
 /**
   * @}
   */
