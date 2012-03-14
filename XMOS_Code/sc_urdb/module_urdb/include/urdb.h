@@ -18,32 +18,35 @@
 
 // Cores for essential URDB threads
 
-#define I2C_CORE		1
+#define IMU_I2C_CORE	3
 #define SPI_CORE		0
-#define STM32_CORE		0
-#define XBEE_CORE		0
+#define STM32_CORE		2
+#define XBEE_CORE		3
+#define XTAG_UART_CORE	0
 /**
  * @def PWM_CORE
  * Sets which core the PWM thread is to be run on.
  */
-#define PWM_CORE		1
+#define PWM_CORE		2
 /**
  * @def NAVIGATION_CORE
  * Sets which core the navigation service is to be run on.
+ * This service should poll the IMU, read encoders, etc.
  */
-#define NAVIGATION_CORE	1
+#define NAVIGATION_CORE	3
 
 // Cores for other peripheral hardware
 
-#define GADGETEER_CORE	0
-#define	PMOD_O_CORE		0
-#define	PMOD_1_CORE		0
-#define PMOD_2_CORE		1
+#define	PMOD_A_CORE		0
+#define	PMOD_B_CORE		1
+#define PMOD_C_CORE		2
+#define UEXT_I2C_CORE	1
+#define UEXT_UART_CORE	1
 
 
 /**
- * @var i2c_req_ch Resource ID for the I2C IO server request input chanend
- * @var i2c_service_ch Resource ID for the I2C IO server request servicing chanend
+ * @var imu_i2c_req_ch Resource ID for the I2C IO server request input chanend
+ * @var imu_i2c_service_ch Resource ID for the I2C IO server request servicing chanend
  * @var spi_req_ch Resource ID for the SPI IO server request input chanend
  * @var spi_service_ch Resource ID for the SPI IO server request servicing chanend
  * @var stm32_req_ch Resource ID for the STM32 UART IO server request input chanend
@@ -51,24 +54,54 @@
  * @var pwm_chanend Resource ID for the PWM thread input chanend
  * @var navigation_chanend Resource ID for the navigation thread input chanend
  */
-unsigned i2c_req_ch;
-unsigned i2c_service_ch;
+unsigned imu_i2c_req_ch;
+unsigned imu_i2c_service_ch;
 unsigned spi_req_ch;
 unsigned spi_service_ch;
 unsigned stm32_req_ch;
 unsigned stm32_service_ch;
-unsigned xbee_req_ch;
-unsigned xbee_service_ch;
 unsigned pwm_chanend;
 unsigned navigation_chanend;
+unsigned uext_i2c_req_ch;
+unsigned uext_i2c_service_ch;
+unsigned uext_uart_req_ch;
+unsigned uext_uart_service_ch;
+unsigned xbee_req_ch;
+unsigned xbee_service_ch;
+unsigned xtag_uart_req_ch;
+unsigned xtag_uart_service_ch;
 
-on stdcore[PWM_CORE] : out buffered port:32 pwm_ports[] = { PORT_PWM_0, PORT_PWM_1, PORT_PWM_2, PORT_SERVO_0, PORT_SERVO_1, PORT_SERVO_2, PORT_SERVO_3, PORT_SERVO_4, PORT_SERVO_5 };
+struct r_encoder {
+	in port a;
+	in port b;
+	in port z;
+};
+
+
+on stdcore[IMU_I2C_CORE] : struct r_i2c imu_i2c = { PORT_IMU_SCL, PORT_IMU_SDA };
+// TODO: struct i2c_data_info i2c_data1; <--- in I2C server thread or here?
+on stdcore[IMU_I2C_CORE] : in buffered port gyro_interrupts = PORT_GYRO_INTS;
+on stdcore[IMU_I2C_CORE] : in buffered port accel_interrupts = PORT_ACCELEROMETER_INTS;
+on stdcore[IMU_I2C_CORE] : in buffered port compass_drdy = PORT_COMPASS_DRDY;
+on stdcore[NAVIGATION_CORE] : struct r_encoder encoder0 = { PORT_ENC0_A, PORT_ENC0_B, PORT_ENC0_Z };
+on stdcore[NAVIGATION_CORE] : struct r_encoder encoder1 = { PORT_ENC1_A, PORT_ENC1_B, PORT_ENC1_Z };
+on stdcore[NAVIGATION_CORE] : struct r_encoder encoder2 = { PORT_ENC2_A, PORT_ENC2_B, PORT_ENC2_Z };
+on stdcore[NAVIGATION_CORE] : in buffered port hbridge_diags = PORT_HBRIDGE_DIAGS;
+on stdcore[NAVIGATION_CORE] : out port hbridge_modes = PORT_HBRIDGE_INPUTS;
+on stdcore[PWM_CORE] : out buffered port:32 pwm_port = PORT_PWM;
 on stdcore[STM32_CORE]: in	port stm32_clk = PORT_STM32_CLK;
 on stdcore[STM32_CORE]: out buffered port:8 stm32_tx = PORT_STM32_TX;
 on stdcore[STM32_CORE]: in	buffered port:8 stm32_rx = PORT_STM32_RX;
 on stdcore[STM32_CORE]: clock stm32_uart_clk = XS1_CLKBLK_5;
+on stdcore[UEXT_I2C_CORE] : struct r_i2c uext_i2c = { PORT_UEXT_SCL, PORT_UEXT_SDA };
+on stdcore[UEXT_UART_CORE]: out	buffered port:8 uext_tx = PORT_UEXT_UART_TX;
+on stdcore[UEXT_UART_CORE]: in	buffered port:8 uext_rx = PORT_UEXT_UART_RX;
 on stdcore[XBEE_CORE]: out	buffered port:8 xbee_tx = PORT_XBEE_TX;
 on stdcore[XBEE_CORE]: in	buffered port:8 xbee_rx = PORT_XBEE_RX;
+on stdcore[XBEE_CORE]: out	port xbee_rts = PORT_XBEE_RTS;
+on stdcore[XBEE_CORE]: in	buffered port xbee_cts = PORT_XBEE_CTS;
+on stdcore[XTAG_UART_CORE]: out	buffered port:8 xtag_tx = PORT_USB_TX;
+on stdcore[XTAG_UART_CORE]: in	buffered port:8 xtag_rx = PORT_USB_RX;
 
 clock ref0;
 clock ref1;
