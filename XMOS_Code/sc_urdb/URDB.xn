@@ -46,14 +46,14 @@ xsi:schemaLocation="http://www.xmos.com http://www.xmos.com">
           
           <Core Number="1" Reference="stdcore[1]">
 				<!--  Pmod 1 -->
-			<Port Location="XS1_PORT_1C" Name="PORT_PMOD_B1"/>
-			<Port Location="XS1_PORT_1B" Name="PORT_PMOD_B2"/>
-			<Port Location="XS1_PORT_1A" Name="PORT_PMOD_B3"/>
-			<Port Location="XS1_PORT_1P" Name="PORT_PMOD_B4"/>
-			<Port Location="XS1_PORT_1O" Name="PORT_PMOD_B7"/>
-			<Port Location="XS1_PORT_1J" Name="PORT_PMOD_B8"/>
-			<Port Location="XS1_PORT_1N" Name="PORT_PMOD_B9"/>
-			<Port Location="XS1_PORT_1M" Name="PORT_PMOD_B10"/>
+			<Port Location="XS1_PORT_1P" Name="PORT_PMOD_B1"/>
+			<Port Location="XS1_PORT_1O" Name="PORT_PMOD_B2"/>
+			<Port Location="XS1_PORT_1J" Name="PORT_PMOD_B3"/>
+			<Port Location="XS1_PORT_1N" Name="PORT_PMOD_B4"/>
+			<Port Location="XS1_PORT_1M" Name="PORT_PMOD_B7"/>
+			<Port Location="XS1_PORT_1L" Name="PORT_PMOD_B8"/>
+			<Port Location="XS1_PORT_1K" Name="PORT_PMOD_B9"/>
+			<Port Location="XS1_PORT_1H" Name="PORT_PMOD_B10"/>
 			
 				<!-- UEXT I2C -->
 			<Port Location="XS1_PORT_1E" Name="PORT_UEXT_SDA"/>
