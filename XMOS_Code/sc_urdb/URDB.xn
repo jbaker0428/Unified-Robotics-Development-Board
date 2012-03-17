@@ -77,22 +77,22 @@ xsi:schemaLocation="http://www.xmos.com http://www.xmos.com">
 		  
 			<!-- 
 				P16Ax:	Signal:
-				0		Servo 0
-				1		Servo 1
-				2		Servo 2
-				3		Servo 3
-				4		Servo 4
-				5		Servo 5
-				6		IC1 PWM
-				7		IC2 PWM
+				0		Servo 2
+				1		Servo 3
+				2		Servo 4
+				3		Servo 5
+				4		IC1 PWM
+				5		IC2 PWM
+				6		IC3 PWM 1
+				7		IC3 PWM 2
 				8		x
 				9		x
 				10		x
 				11		x
 				12		x
 				13		x
-				14		x
-				15		Servo 0
+				14		Servo 0
+				15		Servo 1
 			 -->
 			<Port Location="XS1_PORT_16A" Name="PORT_PWM"/>
 			
@@ -122,57 +122,46 @@ xsi:schemaLocation="http://www.xmos.com http://www.xmos.com">
 				<!-- 
 				P4A0: U15_INT1
 				P4A1: U15_INT2
-				P4B0: U14_INT2
-				P4B1: U14:INT1
+				P4A2: U14_INT2
+				P4A3: U14:INT1
 				 -->
-			<Port Location="XS1_PORT_4A" Name="PORT_GYRO_INTS"/>
-			<Port Location="XS1_PORT_4B" Name="PORT_ACCELEROMETER_INTS"/>
+			<Port Location="XS1_PORT_4A" Name="PORT_IMU_INTS"/>
 			<Port Location="XS1_PORT_1J" Name="PORT_COMPASS_DRDY"/>
 			
-				<!-- H-bridge diagnostic flags -->
+			<Port Location="XS1_PORT_4E" Name="PORT_HBRIDGE_DIAGS"/>
+			
+				<!--  H-bridges direction inputs shift register -->
 				<!-- 
-					P8Bx:	Signal:
-					0		IC1 DIAGB
-					1		IC1 DIAGA
-					2		IC2 DIAGB
-					3		IC2 DIAGA
-					4		IC3 DIAGB
-					5		IC3 DIAGA
-					6		x
-					7		x
-				 -->
-			<Port Location="XS1_PORT_8B" Name="PORT_HBRIDGE_DIAGS"/>
-				<!-- H-bridge direction inputs -->
-				<!-- 
-					P8Cx:	Signal:
+					IC7 Qx:	Signal:
 					0		IC1 INB
 					1		IC1 INA
 					2		IC2 INB
 					3		IC2 INA
-					4		IC3 INB
-					5		IC3 INA
-					6		x
-					7		x
+					4		IC3 IN4
+					5		IC3 IN3
+					6		IC3 IN2
+					7		IC3 IN1
 				 -->
-			<Port Location="XS1_PORT_8C" Name="PORT_HBRIDGE_INPUTS"/>
+			<Port Location="XS1_PORT_1E" Name="PORT_MOTORDIR_CLR"/>
+			<Port Location="XS1_PORT_1G" Name="PORT_MOTORDIR_CLK"/>
+			<Port Location="XS1_PORT_1I" Name="PORT_MOTORDIR_DATA"/>
+			
+				<!-- LV8549M Stepper Driver (IC8) -->
+			<Port Location="XS1_PORT_1N" Name="PORT_STEPPER_EN"/>
+			<Port Location="XS1_PORT_1M" Name="PORT_STEPPER_IN1"/>
+			<Port Location="XS1_PORT_1L" Name="PORT_STEPPER_IN2"/>
 			
 				<!--  XBEE UART -->
 			<Port Location="XS1_PORT_1C" Name="PORT_XBEE_RX"/>
 			<Port Location="XS1_PORT_1D" Name="PORT_XBEE_TX"/>
 			<Port Location="XS1_PORT_1O" Name="PORT_XBEE_RTS"/>
 			<Port Location="XS1_PORT_1P" Name="PORT_XBEE_CTS"/>
-			
-			<Port Location="XS1_PORT_1E" Name="PORT_ENC0_A"/>
-			<Port Location="XS1_PORT_1I" Name="PORT_ENC0_B"/>
-			<Port Location="XS1_PORT_1G" Name="PORT_ENC0_Z"/>
-			
-			<Port Location="XS1_PORT_1K" Name="PORT_ENC1_A"/>
-			<Port Location="XS1_PORT_1F" Name="PORT_ENC1_B"/>
-			<Port Location="XS1_PORT_1H" Name="PORT_ENC1_Z"/>
-			
-			<Port Location="XS1_PORT_1M" Name="PORT_ENC2_A"/>
-			<Port Location="XS1_PORT_1N" Name="PORT_ENC2_B"/>
-			<Port Location="XS1_PORT_1L" Name="PORT_ENC2_Z"/>
+				
+				<!-- Quadrature Encoders -->
+			<Port Location="XS1_PORT_4F" Name="PORT_QEI1"/>
+			<Port Location="XS1_PORT_4C" Name="PORT_QEI2"/>
+			<Port Location="XS1_PORT_4D" Name="PORT_QEI3"/>
+			<Port Location="XS1_PORT_4B" Name="PORT_QEI4"/>
           </Core>
         </Node>
       </Nodes>

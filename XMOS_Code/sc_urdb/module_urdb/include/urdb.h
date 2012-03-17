@@ -71,22 +71,26 @@ unsigned xbee_service_ch;
 unsigned xtag_uart_req_ch;
 unsigned xtag_uart_service_ch;
 
-struct r_encoder {
-	in port a;
-	in port b;
-	in port z;
-};
 
 
 on stdcore[IMU_I2C_CORE] : struct r_i2c imu_i2c = { PORT_IMU_SCL, PORT_IMU_SDA };
 // TODO: struct i2c_data_info i2c_data1; <--- in I2C server thread or here?
-on stdcore[IMU_I2C_CORE] : in buffered port gyro_interrupts = PORT_GYRO_INTS;
-on stdcore[IMU_I2C_CORE] : in buffered port accel_interrupts = PORT_ACCELEROMETER_INTS;
+on stdcore[IMU_I2C_CORE] : in buffered port imu_interrupts = PORT_IMU_INTS;
 on stdcore[IMU_I2C_CORE] : in buffered port compass_drdy = PORT_COMPASS_DRDY;
-on stdcore[NAVIGATION_CORE] : struct r_encoder encoder0 = { PORT_ENC0_A, PORT_ENC0_B, PORT_ENC0_Z };
-on stdcore[NAVIGATION_CORE] : struct r_encoder encoder1 = { PORT_ENC1_A, PORT_ENC1_B, PORT_ENC1_Z };
-on stdcore[NAVIGATION_CORE] : struct r_encoder encoder2 = { PORT_ENC2_A, PORT_ENC2_B, PORT_ENC2_Z };
+on stdcore[NAVIGATION_CORE] : in port encoder1 = PORT_QEI1;
+on stdcore[NAVIGATION_CORE] : in port encoder2 = PORT_QEI2;
+on stdcore[NAVIGATION_CORE] : in port encoder3 = PORT_QEI3;
+on stdcore[NAVIGATION_CORE] : in port encoder4 = PORT_QEI4;
+
 on stdcore[NAVIGATION_CORE] : in buffered port hbridge_diags = PORT_HBRIDGE_DIAGS;
+on stdcore[NAVIGATION_CORE] : out port motordir_clr = PORT_MOTORDIR_CLR;
+on stdcore[NAVIGATION_CORE] : out port motordir_clk = PORT_MOTORDIR_CLK;
+on stdcore[NAVIGATION_CORE] : out port motordir_data = PORT_MOTORDIR_DATA;
+
+on stdcore[NAVIGATION_CORE] : out port stepper_en = PORT_STEPPER_EN;
+on stdcore[NAVIGATION_CORE] : out port stepper_in1= PORT_STEPPER_IN1;
+on stdcore[NAVIGATION_CORE] : out port stepper_in2 = PORT_STEPPER_IN2;
+
 on stdcore[NAVIGATION_CORE] : out port hbridge_modes = PORT_HBRIDGE_INPUTS;
 on stdcore[PWM_CORE] : out buffered port:32 pwm_port = PORT_PWM;
 on stdcore[STM32_CORE]: in	port stm32_clk = PORT_STM32_CLK;
