@@ -179,6 +179,8 @@ xsi:schemaLocation="http://www.xmos.com http://www.xmos.com">
   
 	<Links>
 		<Link Encoding="2wire" Delays="1,1"> <LinkEndpoint Nodeid="1" Link="X1LB"/> <LinkEndpoint Nodeid="2" Link="X0LB"/> </Link>
+		<!--  Uncomment the line below if adding a XK-1A on the XSYS out port -->
+		<!-- <Link Encoding="2wire" Delays="1,1"> <LinkEndpoint Nodeid="1" Link="X0LB"/> <LinkEndpoint Nodeid="2" Link="X4LD"/> </Link> -->
 	</Links>
 
 	<JTAGChain>
