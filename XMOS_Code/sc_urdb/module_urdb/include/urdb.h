@@ -18,6 +18,7 @@
 
 // Cores for essential URDB threads
 
+#define ETHERNET_CORE	1
 #define IMU_I2C_CORE	3
 #define SPI_CORE		0
 #define STM32_CORE		2
@@ -54,6 +55,8 @@
  * @var pwm_chanend Resource ID for the PWM thread input chanend
  * @var navigation_chanend Resource ID for the navigation thread input chanend
  */
+unsigned imu_eth_req_ch;
+unsigned imu_eth_service_ch;
 unsigned imu_i2c_req_ch;
 unsigned imu_i2c_service_ch;
 unsigned spi_req_ch;
