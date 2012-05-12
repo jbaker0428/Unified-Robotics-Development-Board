@@ -1,11 +1,8 @@
 The Unified Robotics Development Board seeks to provide an extensible open-hardware platform for robotics development based on XMOS technology.
 
 SOFTWARE USED:
-PCB design: Eagle 5.6.0 Professional
+PCB design: Eagle 5.6.0
 STM32 code: Eclipse Indigo SR1 (CDT) and YAGARTO (Yet another GNU ARM toolchain)
 XMOS code: XMOS Development Environment
-
-A note on the lack of STM32 progress:
-There are currently plans to port libmaple to the STM32L1 for use on the URDB. Further STM32 development has been paused until the libmaple port is completed. Unfortunately, the current version of libmaple is not written in such a way to support multiple processor types. The libmaple development team is currently correcting this as they add support for the STM32F2. When the STM32F2 port of libmaple is ready ("sometime in January"), work will begin on the STM32L1 port.
 
 The Unified Robotics Development Board is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
